@@ -124,7 +124,7 @@ This instance can be used to safely remove the listener from registry again.</p>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">lib/metrics/metric-registry.ts:23</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">lib/metrics/metric-registry.ts:24</a></div>
                             </td>
                         </tr>
 
@@ -206,7 +206,7 @@ This instance can be used to safely remove the listener from registry again.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">lib/metrics/metric-registry.ts:39</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">lib/metrics/metric-registry.ts:40</a></div>
                             </td>
                         </tr>
 
@@ -239,6 +239,7 @@ This instance can be used to safely remove the listener from registry again.</p>
 
 import { Clock, StdClock } from &quot;./clock&quot;;
 import { Counter, MonotoneCounter } from &quot;./counter&quot;;
+import { Buckets } from &quot;./counting&quot;;
 import { Gauge } from &quot;./gauge&quot;;
 import { Histogram } from &quot;./histogram&quot;;
 import { Meter } from &quot;./meter&quot;;
@@ -953,11 +954,13 @@ export class MetricRegistry extends BaseMetric implements MetricSet {
         name: string,
         group: string &#x3D; null,
         reservoir: Reservoir &#x3D; null,
-        description: string &#x3D; null): Histogram {
+        description: string &#x3D; null,
+        buckets: Buckets &#x3D; new Buckets()): Histogram {
+
         if (!reservoir) {
             reservoir &#x3D; new SlidingWindowReservoir(1024);
         }
-        const histogram &#x3D; new Histogram(reservoir, name, description);
+        const histogram &#x3D; new Histogram(reservoir, name, description, buckets);
         if (!!group) {
             histogram.setGroup(group);
         }
@@ -982,12 +985,13 @@ export class MetricRegistry extends BaseMetric implements MetricSet {
         group: string &#x3D; null,
         clock: Clock &#x3D; this.defaultClock,
         reservoir: Reservoir &#x3D; null,
-        description: string &#x3D; null): Timer {
+        description: string &#x3D; null,
+        buckets: Buckets &#x3D; new Buckets()): Timer {
 
         if (!reservoir) {
             reservoir &#x3D; new SlidingWindowReservoir(1024);
         }
-        const timer &#x3D; new Timer(clock, reservoir, name, description);
+        const timer &#x3D; new Timer(clock, reservoir, name, description, buckets);
         if (!!group) {
             timer.setGroup(group);
         }

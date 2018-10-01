@@ -46,7 +46,7 @@
 
 <ol class="breadcrumb">
   <li>Interfaces</li>
-  <li>Counting</li>
+  <li>BucketCounting</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -71,7 +71,8 @@
                 <h3>Description</h3>
             </p>
             <p class="comment">
-                <p>Represents everything that is countable (<a href="../classes/Counter.html">Counter</a>, <a href="../classes/MonotoneCounter.html">MonotoneCounter</a>, <a href="../classes/Histogram.html">Histogram</a>).</p>
+                <p>Interface for defining counting events based on Buckets.
+The meaning of the countings is implementation-specific.</p>
 
             </p>
 
@@ -95,7 +96,10 @@
                         <td class="col-md-4">
                             <ul class="index-list">
                                 <li>
-                                    <a href="#getCount">getCount</a>
+                                    <a href="#getBuckets">getBuckets</a>
+                                </li>
+                                <li>
+                                    <a href="#getCounts">getCounts</a>
                                 </li>
                             </ul>
                         </td>
@@ -113,38 +117,85 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="getCount"></a>
+                        <a name="getBuckets"></a>
                         <span class="name">
                             <b>
-                            getCount
+                            getBuckets
                             </b>
-                            <a href="#getCount"><span class="icon ion-ios-link"></span></a>
+                            <a href="#getBuckets"><span class="icon ion-ios-link"></span></a>
                         </span>
                     </td>
                 </tr>
                 <tr>
                     <td class="col-md-4">
-<code>getCount()</code>
+<code>getBuckets()</code>
                     </td>
                 </tr>
 
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">lib/metrics/counting.ts:20</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="120" class="link-to-prism">lib/metrics/counting.ts:120</a></div>
                             </td>
                         </tr>
 
 
                 <tr>
                     <td class="col-md-4">
-                            <div class="io-description"><p>Gets the current count - e.g. the number of samples in Histogram or the value of a counter.</p>
+                            <div class="io-description"><p>Gets the current Buckets object used to do the counting.</p>
 </div>
 
                             <div>
                             </div>
                             <div class="io-description">
-                                <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                <b>Returns : </b>    <code><a href="../classes/Buckets.html" target="_self" >Buckets</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="getCounts"></a>
+                        <span class="name">
+                            <b>
+                            getCounts
+                            </b>
+                            <a href="#getCounts"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>getCounts()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="130" class="link-to-prism">lib/metrics/counting.ts:130</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Gets a mapping from the boundary to the count of events
+within the corresponding boundary.
+The meaning of the count is implementation specific.</p>
+</div>
+
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>Map&lt;number, number&gt;</code>
 
                             </div>
                                 <div class="io-description">
@@ -319,7 +370,7 @@ export interface BucketCounting extends Metric {
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'interface';
-            var COMPODOC_CURRENT_PAGE_URL = 'Counting.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'BucketCounting.html';
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

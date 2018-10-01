@@ -150,7 +150,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">lib/metrics/timer.ts:46</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">lib/metrics/timer.ts:47</a></div>
                             </td>
                         </tr>
 
@@ -235,7 +235,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">lib/metrics/timer.ts:30</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">lib/metrics/timer.ts:31</a></div>
                             </td>
                         </tr>
 
@@ -276,7 +276,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">lib/metrics/timer.ts:46</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">lib/metrics/timer.ts:47</a></div>
                             </td>
                         </tr>
 
@@ -317,7 +317,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">lib/metrics/timer.ts:38</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">lib/metrics/timer.ts:39</a></div>
                             </td>
                         </tr>
 
@@ -361,7 +361,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">lib/metrics/timer.ts:65</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">lib/metrics/timer.ts:66</a></div>
                             </td>
                         </tr>
 
@@ -403,7 +403,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="75" class="link-to-prism">lib/metrics/timer.ts:75</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="76" class="link-to-prism">lib/metrics/timer.ts:76</a></div>
                             </td>
                         </tr>
 
@@ -436,6 +436,7 @@ and this invocation to the timer in nanoseconds.</p>
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import &quot;source-map-support/register&quot;;
 
 import { Clock, diff, Time } from &quot;./clock&quot;;
+import { BucketCounting, Buckets } from &quot;./counting&quot;;
 import { Histogram } from &quot;./histogram&quot;;
 import { Int64Wrapper } from &quot;./int64&quot;;
 import { Meter } from &quot;./meter&quot;;
@@ -523,7 +524,7 @@ export class StopWatch {
  * @implements {Metered}
  * @implements {Sampling}
  */
-export class Timer extends BaseMetric implements Metered, Sampling, Summarizing {
+export class Timer extends BaseMetric implements BucketCounting, Metered, Sampling, Summarizing {
 
     /**
      * Used to determine a duration.
@@ -557,15 +558,22 @@ export class Timer extends BaseMetric implements Metered, Sampling, Summarizing 
      * @param {Reservoir} reservoir
      * @param {string} [name]
      * @param {string} [description]
+     * @param {string} [buckets&#x3D;new Buckets()]
      * @memberof Timer
      */
-    public constructor(clock: Clock, reservoir: Reservoir, name?: string, description?: string) {
+    public constructor(
+        clock: Clock,
+        reservoir: Reservoir,
+        name?: string,
+        description?: string,
+        buckets: Buckets &#x3D; new Buckets()) {
+
         super();
         this.clock &#x3D; clock;
         this.name &#x3D; name;
         this.description &#x3D; description;
         this.meter &#x3D; new Meter(clock, 1, name);
-        this.histogram &#x3D; new Histogram(reservoir, name);
+        this.histogram &#x3D; new Histogram(reservoir, name, description, buckets);
     }
 
     /**
@@ -650,6 +658,26 @@ export class Timer extends BaseMetric implements Metered, Sampling, Summarizing 
      */
     public getMeanRate(): number {
         return this.meter.getMeanRate();
+    }
+
+    /**
+     * Gets the bucket config from the internal {@link Histogram} and therefore representing the durations.
+     *
+     * @returns {Buckets}
+     * @memberof Timer
+     */
+    public getBuckets(): Buckets {
+        return this.histogram.getBuckets();
+    }
+
+    /**
+     * Gets the bucket counts from the internal {@link Histogram}.
+     *
+     * @returns {Map&lt;number, number&gt;}
+     * @memberof Timer
+     */
+    public getCounts(): Map&lt;number, number&gt; {
+        return this.histogram.getCounts();
     }
 
     /**

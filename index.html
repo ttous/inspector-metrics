@@ -40,6 +40,9 @@
         <img src="https://img.shields.io/npm/v/inspector-metrics.svg" alt="NPM Version">
     </a>
     <a href="https://www.npmjs.org/package/inspector-metrics">
+        <img src="https://img.shields.io/npm/dm/inspector-metrics.svg" alt="Downloads per Month">
+    </a>
+    <a href="https://www.npmjs.org/package/inspector-metrics">
         <img src="https://img.shields.io/npm/l/inspector-metrics.svg" alt="License">
     </a>
     <a href="https://travis-ci.org/rstiller/inspector-metrics">
@@ -58,7 +61,8 @@
 to use the library.</p>
 <p>Supported metric types:</p>
 <ul>
-<li>Counter - measures an integer value (e.g. &quot;how many time was my function called&quot;)</li>
+<li>Counter - measures an integer value (e.g. &quot;how many time was my function called, number of bookings in a sales system&quot;)</li>
+<li>MonotoneCounter - a monotonically increasing integer value (e.g. &quot;error count&quot;)</li>
 <li>Gauge - measurement of a value (e.g. &quot;number of waiting threads on a resource&quot;)</li>
 <li>Histogram - measures the statistical distribution of all values</li>
 <li>Meter - measures the rate of events over time (e.g. &quot;requests per second&quot;)</li>
@@ -108,7 +112,22 @@ requestCount.decrement(1);
 // =0
 requestCount.getCount();
 
-requestCount.reset();</code></pre></div><h3 id="gauge">Gauge</h3>
+requestCount.reset();</code></pre></div><h3 id="monotonecounter">MonotoneCounter</h3>
+<div><pre class="line-numbers"><code class="language-typescript">import { MonotoneCounter, MetricRegistry } from &quot;inspector-metrics&quot;;
+
+const registry = new MetricRegistry();
+const errorCount: MonotoneCounter = registry.newMonotoneCounter(&quot;errorCount&quot;);
+
+// +1
+errorCount.increment(1);
+
+// causes error
+errorCount.increment(-1);
+
+// =1
+errorCount.getCount();
+
+errorCount.reset();</code></pre></div><h3 id="gauge">Gauge</h3>
 <div><pre class="line-numbers"><code class="language-typescript">import { BaseMetric, Gauge, MetricRegistry, SimpleGauge } from &quot;inspector-metrics&quot;;
 
 class ArrayLengthGauge extends BaseMetric implements Gauge&lt;number&gt; {

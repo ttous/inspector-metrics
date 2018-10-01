@@ -46,7 +46,7 @@
 
 <ol class="breadcrumb">
   <li>Interfaces</li>
-  <li>Metric</li>
+  <li>MetadataContainer</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -64,23 +64,17 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>lib/metrics/metric.ts</code>
+            <code>lib/metrics/metadata-container.ts</code>
         </p>
 
             <p class="comment">
                 <h3>Description</h3>
             </p>
             <p class="comment">
-                <p>Representation for a metrics.</p>
+                <p>Interface for all classes that can associate metadata with instances.</p>
 
             </p>
 
-            <p class="comment">
-                <h3>Extends</h3>
-            </p>
-            <p class="comment">
-                    <code><a href="../interfaces/Groupable.html" target="_self" >Groupable</a></code>
-            </p>
 
         <section>
             <h3 id="index">Index</h3>
@@ -95,16 +89,16 @@
                         <td class="col-md-4">
                             <ul class="index-list">
                                 <li>
-                                    <a href="#getDescription">getDescription</a>
+                                    <a href="#getMetadata">getMetadata</a>
                                 </li>
                                 <li>
-                                    <a href="#getName">getName</a>
+                                    <a href="#getMetadataMap">getMetadataMap</a>
                                 </li>
                                 <li>
-                                    <a href="#setDescription">setDescription</a>
+                                    <a href="#removeMetadata">removeMetadata</a>
                                 </li>
                                 <li>
-                                    <a href="#setName">setName</a>
+                                    <a href="#setMetadata">setMetadata</a>
                                 </li>
                             </ul>
                         </td>
@@ -122,122 +116,40 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="getDescription"></a>
+                        <a name="getMetadata"></a>
                         <span class="name">
                             <b>
-                            getDescription
+                            getMetadata
                             </b>
-                            <a href="#getDescription"><span class="icon ion-ios-link"></span></a>
+                            <a href="#getMetadata"><span class="icon ion-ios-link"></span></a>
                         </span>
                     </td>
                 </tr>
                 <tr>
                     <td class="col-md-4">
-<code>getDescription()</code>
+<code>getMetadata(name: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                     </td>
                 </tr>
 
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">lib/metrics/metric.ts:39</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">lib/metrics/metadata-container.ts:29</a></div>
                             </td>
                         </tr>
-
-
-                <tr>
-                    <td class="col-md-4">
-                            <div class="io-description"><p>Gets the description of the metric.</p>
-</div>
-
-                            <div>
-                            </div>
-                            <div class="io-description">
-                                <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-
-                            </div>
-                                <div class="io-description">
-                                    
-                                </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="getName"></a>
-                        <span class="name">
-                            <b>
-                            getName
-                            </b>
-                            <a href="#getName"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-<code>getName()</code>
-                    </td>
-                </tr>
-
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">lib/metrics/metric.ts:23</a></div>
+                                <b>Type parameters :</b>
+                                <ul class="type-parameters">
+                                        <li>T</li>
+                                </ul>
                             </td>
                         </tr>
 
-
                 <tr>
                     <td class="col-md-4">
-                            <div class="io-description"><p>Gets the name of the metric.</p>
-</div>
-
-                            <div>
-                            </div>
-                            <div class="io-description">
-                                <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-
-                            </div>
-                                <div class="io-description">
-                                    
-                                </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="setDescription"></a>
-                        <span class="name">
-                            <b>
-                            setDescription
-                            </b>
-                            <a href="#setDescription"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-<code>setDescription(description: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
-                    </td>
-                </tr>
-
-
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">lib/metrics/metric.ts:47</a></div>
-                            </td>
-                        </tr>
-
-
-                <tr>
-                    <td class="col-md-4">
-                            <div class="io-description"><p>Sets the description of the metric.</p>
+                            <div class="io-description"><p>Gets the metadata associated with the specified name.</p>
 </div>
 
                             <div class="io-description">
@@ -248,77 +160,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                                <tr>
-                                                        <td>description</td>
-                                                        <td>
-                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                                        </td>
-                                                    
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-
-                                                </tr>
-                                        </tbody>
-                                    </table>
-                            </div>
-                            <div>
-                            </div>
-                            <div class="io-description">
-                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                            </div>
-                                <div class="io-description">
-                                    
-                                </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="setName"></a>
-                        <span class="name">
-                            <b>
-                            setName
-                            </b>
-                            <a href="#setName"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-<code>setName(name: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
-                    </td>
-                </tr>
-
-
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">lib/metrics/metric.ts:31</a></div>
-                            </td>
-                        </tr>
-
-
-                <tr>
-                    <td class="col-md-4">
-                            <div class="io-description"><p>Sets the name of the metric.</p>
-</div>
-
-                            <div class="io-description">
-                                    <b>Parameters :</b>
-                                    <table class="params">
-                                        <thead>
-                                            <tr>
-                                                <td>Name</td>
-                                                    <td>Type</td>
-                                                <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -333,6 +175,241 @@
                                                     </td>
                                                     
 
+                                                        <td>
+                                                                <code><p>The metadata key</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>T</code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="getMetadataMap"></a>
+                        <span class="name">
+                            <b>
+                            getMetadataMap
+                            </b>
+                            <a href="#getMetadataMap"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>getMetadataMap()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">lib/metrics/metadata-container.ts:19</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Gets all the metadata associated with an instance.
+Future changes to the metadata of this instance may
+not be reflected in the map returned here.</p>
+</div>
+
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>Map&lt;string, any&gt;</code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="removeMetadata"></a>
+                        <span class="name">
+                            <b>
+                            removeMetadata
+                            </b>
+                            <a href="#removeMetadata"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>removeMetadata(name: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">lib/metrics/metadata-container.ts:39</a></div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="col-md-4">
+                                <b>Type parameters :</b>
+                                <ul class="type-parameters">
+                                        <li>T</li>
+                                </ul>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Removes the metadata associated with the specified name and returns it finally.</p>
+</div>
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>name</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                                <code><p>The metadata key</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>T</code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="setMetadata"></a>
+                        <span class="name">
+                            <b>
+                            setMetadata
+                            </b>
+                            <a href="#setMetadata"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>setMetadata(name: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, value: T)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">lib/metrics/metadata-container.ts:49</a></div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="col-md-4">
+                                <b>Type parameters :</b>
+                                <ul class="type-parameters">
+                                        <li>T</li>
+                                </ul>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Sets the metadata object to the name.</p>
+</div>
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>name</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                                <code><p>The key of the metadata</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>value</td>
+                                                        <td>
+                                                                    <code>T</code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                                <code><p>any value</p>
+</code>
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -359,188 +436,53 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import &quot;source-map-support/register&quot;;
 
-import { Groupable } from &quot;./groupable&quot;;
-import { MetadataContainer } from &quot;./metadata-container&quot;;
-import { Taggable } from &quot;./taggable&quot;;
-
 /**
- * Representation for a metrics.
+ * Interface for all classes that can associate metadata with instances.
  *
  * @export
- * @interface Metric
- * @extends {Groupable}
- * @extends {Taggable}
+ * @interface MetadataContainer
  */
-export interface Metric extends Groupable, MetadataContainer, Taggable {
+export interface MetadataContainer {
 
     /**
-     * Gets the name of the metric.
+     * Gets all the metadata associated with an instance.
+     * Future changes to the metadata of this instance may
+     * not be reflected in the map returned here.
      *
-     * @returns {string}
-     * @memberof Metric
+     * @returns {Map&lt;string, any&gt;}
+     * @memberof MetadataContainer
      */
-    getName(): string;
+    getMetadataMap(): Map&lt;string, any&gt;;
 
     /**
-     * Sets the name of the metric.
+     * Gets the metadata associated with the specified name.
      *
-     * @param {string} name
-     * @memberof Metric
+     * @template T
+     * @param {string} name The metadata key
+     * @returns {T}
+     * @memberof MetadataContainer
      */
-    setName(name: string): void;
+    getMetadata&lt;T&gt;(name: string): T;
 
     /**
-     * Gets the description of the metric.
+     * Removes the metadata associated with the specified name and returns it finally.
      *
-     * @returns {string}
-     * @memberof Metric
+     * @template T
+     * @param {string} name The metadata key
+     * @returns {T}
+     * @memberof MetadataContainer
      */
-    getDescription(): string;
+    removeMetadata&lt;T&gt;(name: string): T;
 
     /**
-     * Sets the description of the metric.
+     * Sets the metadata object to the name.
      *
-     * @param {string} description
-     * @memberof Metric
+     * @template T
+     * @param {string} name The key of the metadata
+     * @param {T} value any value
+     * @memberof MetadataContainer
      */
-    setDescription(description: string): void;
-
-}
-
-/**
- * Abstract base-class for a metric which implements commonly needed functions:
- * - get / set name
- * - get / set tags
- * - get / set group
- *
- * @export
- * @abstract
- * @class BaseMetric
- * @implements {Metric}
- */
-export abstract class BaseMetric implements Metric {
-
-    /**
-     * A static number instance to give an unique id with an application instance.
-     *
-     * @private
-     * @static
-     * @memberof BaseMetric
-     */
-    private static COUNTER &#x3D; 0;
-
-    /**
-     * The unique id of this metric instance.
-     *
-     * @type {number}
-     * @memberof BaseMetric
-     */
-    public readonly id: number &#x3D; BaseMetric.COUNTER++;
-    /**
-     * Maps of tags for this metric.
-     *
-     * @protected
-     * @type {Map&lt;string, string&gt;}
-     * @memberof BaseMetric
-     */
-    protected tags: Map&lt;string, string&gt; &#x3D; new Map();
-    /**
-     * The group set to this metric.
-     *
-     * @protected
-     * @type {string}
-     * @memberof BaseMetric
-     */
-    protected group: string;
-    /**
-     * The name of this metric.
-     *
-     * @protected
-     * @type {string}
-     * @memberof BaseMetric
-     */
-    protected name: string;
-    /**
-     * The description of this metric.
-     *
-     * @protected
-     * @type {string}
-     * @memberof BaseMetric
-     */
-    protected description: string;
-    /**
-     * The metadata associated with an instance of class.
-     *
-     * @protected
-     * @type {Map&lt;string, any&gt;}
-     * @memberof BaseMetric
-     */
-    protected metadata: Map&lt;string, any&gt; &#x3D; new Map();
-
-    public getMetadataMap(): Map&lt;string, any&gt; {
-        return this.metadata;
-    }
-
-    public getMetadata&lt;T&gt;(name: string): T {
-        return this.metadata.get(name) as T;
-    }
-
-    public removeMetadata&lt;T&gt;(name: string): T {
-        const value &#x3D; this.metadata.get(name) as T;
-        this.metadata.delete(name);
-        return value;
-    }
-
-    public setMetadata&lt;T&gt;(name: string, value: T): void {
-        this.metadata.set(name, value);
-    }
-
-    public getName(): string {
-        return this.name;
-    }
-
-    public setName(name: string): void {
-        this.name &#x3D; name;
-    }
-
-    public getDescription(): string {
-        return this.description;
-    }
-
-    public setDescription(description: string): void {
-        this.description &#x3D; description;
-    }
-
-    public getGroup(): string {
-        return this.group;
-    }
-
-    public setGroup(group: string): void {
-        this.group &#x3D; group;
-    }
-
-    public getTags(): Map&lt;string, string&gt; {
-        return this.tags;
-    }
-
-    public getTag(name: string): string {
-        return this.tags.get(name);
-    }
-
-    public setTag(name: string, value: string): void {
-        this.tags.set(name, value);
-    }
-
-    public removeTag(name: string): void {
-        this.tags.delete(name);
-    }
-
-    public toString(): string {
-        if (this.group) {
-            return &#x60;${this.group}.${this.name}&#x60;;
-        }
-        return this.name;
-    }
+    setMetadata&lt;T&gt;(name: string, value: T): void;
 
 }
 </code></pre>
@@ -569,7 +511,7 @@ export abstract class BaseMetric implements Metric {
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'interface';
-            var COMPODOC_CURRENT_PAGE_URL = 'Metric.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'MetadataContainer.html';
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

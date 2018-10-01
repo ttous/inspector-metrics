@@ -61,6 +61,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                         <a href="classes/BaseMetric.html" data-type="entity-link">BaseMetric</a>
                     </li>
                     <li class="link">
+                        <a href="classes/Buckets.html" data-type="entity-link">Buckets</a>
+                    </li>
+                    <li class="link">
                         <a href="classes/Clock.html" data-type="entity-link">Clock</a>
                     </li>
                     <li class="link">
@@ -135,6 +138,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
             <ul class="links collapse"
             ${ isNormalMode ? ' id="interfaces-links"' : 'id="xs-interfaces-links"' }>
                     <li class="link">
+                        <a href="interfaces/BucketCounting.html" data-type="entity-link">BucketCounting</a>
+                    </li>
+                    <li class="link">
                         <a href="interfaces/Counting.html" data-type="entity-link">Counting</a>
                     </li>
                     <li class="link">
@@ -151,6 +157,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                     </li>
                     <li class="link">
                         <a href="interfaces/Logger.html" data-type="entity-link">Logger</a>
+                    </li>
+                    <li class="link">
+                        <a href="interfaces/MetadataContainer.html" data-type="entity-link">MetadataContainer</a>
                     </li>
                     <li class="link">
                         <a href="interfaces/Metered.html" data-type="entity-link">Metered</a>
