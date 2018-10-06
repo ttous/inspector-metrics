@@ -64,6 +64,7 @@ to use the library.</p>
 <li>Counter - measures an integer value (e.g. &quot;how many time was my function called, number of bookings in a sales system&quot;)</li>
 <li>MonotoneCounter - a monotonically increasing integer value (e.g. &quot;error count&quot;)</li>
 <li>Gauge - measurement of a value (e.g. &quot;number of waiting threads on a resource&quot;)</li>
+<li>HdrHistogram - recording and analyzing sampled data value counts across a configurable integer value range with configurable value precision</li>
 <li>Histogram - measures the statistical distribution of all values</li>
 <li>Meter - measures the rate of events over time (e.g. &quot;requests per second&quot;)</li>
 <li>Timer - measures call-rate of a function and the distribution of the duration of all calls</li>
@@ -166,14 +167,32 @@ arrayLength.getValue();</code></pre></div><h3 id="histogram">Histogram</h3>
 <div><pre class="line-numbers"><code class="language-typescript">import { Histogram, MetricRegistry, Snapshot } from &quot;inspector-metrics&quot;;
 
 const registry = new MetricRegistry();
-const entityCount: Histogram = registry.newHistogram(&quot;requestCount&quot;);
+// measures a duration / latency
+const requestLatency: Histogram = registry.newHistogram(&quot;requestLatency&quot;);
 
-entityCount.update(12345);
+requestLatency.update(12345);
+requestLatency.update(23456);
+requestLatency.update(34567);
 
-// 12345
-entityCount.getValue();
+// a copy of the current values
+const snapshot: Snapshot = requestLatency.getSnapshot();
 
-const snapshot: Snapshot = entityCount.getSnapshot();
+// mean count
+const mean: number = snapshot.getMean();</code></pre></div><h3 id="hdrhistogram">HdrHistogram</h3>
+<div><pre class="line-numbers"><code class="language-typescript">import { HdrHistogram, MetricRegistry, Snapshot } from &quot;inspector-metrics&quot;;
+
+const registry = new MetricRegistry();
+// measures a duration / latency between 1 and 1000000000 nanoseconds
+const requestLatency: HdrHistogram = registry.newHdrHistogram(&quot;requestLatency&quot;, 1, 1000000000);
+
+// 102 microseconds in nanoseconds
+requestLatency.update(102000);
+// 4.390 milliseconds in nanoseconds
+requestLatency.update(4390000);
+
+// only snapshot interface - always uses the current values
+// since the native-hdr-histogram is used as a reference
+const snapshot: Snapshot = requestLatency.getSnapshot();
 
 // mean count
 const mean: number = snapshot.getMean();</code></pre></div><h3 id="meter">Meter</h3>

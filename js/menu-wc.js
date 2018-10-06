@@ -76,6 +76,12 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                         <a href="classes/ExponentiallyWeightedMovingAverage.html" data-type="entity-link">ExponentiallyWeightedMovingAverage</a>
                     </li>
                     <li class="link">
+                        <a href="classes/HdrHistogram.html" data-type="entity-link">HdrHistogram</a>
+                    </li>
+                    <li class="link">
+                        <a href="classes/HdrSnapshot.html" data-type="entity-link">HdrSnapshot</a>
+                    </li>
+                    <li class="link">
                         <a href="classes/Histogram.html" data-type="entity-link">Histogram</a>
                     </li>
                     <li class="link">

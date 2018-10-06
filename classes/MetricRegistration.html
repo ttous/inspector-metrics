@@ -127,7 +127,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="68" class="link-to-prism">lib/metrics/metric-registry.ts:68</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">lib/metrics/metric-registry.ts:69</a></div>
                             </td>
                         </tr>
 
@@ -200,7 +200,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">lib/metrics/metric-registry.ts:61</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">lib/metrics/metric-registry.ts:62</a></div>
                             </td>
                         </tr>
 
@@ -241,7 +241,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="68" class="link-to-prism">lib/metrics/metric-registry.ts:68</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">lib/metrics/metric-registry.ts:69</a></div>
                             </td>
                         </tr>
 
@@ -272,6 +272,7 @@ import { Clock, StdClock } from &quot;./clock&quot;;
 import { Counter, MonotoneCounter } from &quot;./counter&quot;;
 import { Buckets } from &quot;./counting&quot;;
 import { Gauge } from &quot;./gauge&quot;;
+import { HdrHistogram } from &quot;./hdr-histogram&quot;;
 import { Histogram } from &quot;./histogram&quot;;
 import { Meter } from &quot;./meter&quot;;
 import { BaseMetric, Metric } from &quot;./metric&quot;;
@@ -968,6 +969,38 @@ export class MetricRegistry extends BaseMetric implements MetricSet {
         }
         this.register(meter.getName(), meter);
         return meter;
+    }
+
+    /**
+     * Builds a new hdr-histogram with the given name and adds it
+     * to the registry.
+     *
+     * @param {string} name
+     * @param {number} [lowest&#x3D;1] is the lowest possible number that can be recorded
+     * @param {number} [max&#x3D;100] is the maximum number that can be recorded
+     * @param {number} [figures&#x3D;3]
+     *      the number of figures in a decimal number that will be maintained, must be between 1 and 5 (inclusive)
+     * @param {string} [group&#x3D;null]
+     * @param {string} [description&#x3D;null]
+     * @param {Reservoir} [reservoir&#x3D;null]
+     * @returns {HdrHistogram}
+     * @memberof MetricRegistry
+     */
+    public newHdrHistogram(
+        name: string,
+        lowest: number &#x3D; 1,
+        max: number &#x3D; 100,
+        figures: number &#x3D; 3,
+        group: string &#x3D; null,
+        description: string &#x3D; null,
+        buckets: Buckets &#x3D; new Buckets()): HdrHistogram {
+
+        const histogram &#x3D; new HdrHistogram(lowest, max, figures, name, description, buckets);
+        if (!!group) {
+            histogram.setGroup(group);
+        }
+        this.register(histogram.getName(), histogram);
+        return histogram;
     }
 
     /**

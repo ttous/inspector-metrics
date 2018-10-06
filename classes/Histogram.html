@@ -111,24 +111,26 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Protected</span>
                                     <span class="modifier">Readonly</span>
                                 <a href="#bucketCounts">bucketCounts</a>
                             </li>
                             <li>
-                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Protected</span>
+                                    <span class="modifier">Readonly</span>
                                 <a href="#buckets">buckets</a>
                             </li>
                             <li>
-                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Protected</span>
                                 <a href="#count">count</a>
                             </li>
                             <li>
-                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Protected</span>
+                                    <span class="modifier">Readonly</span>
                                 <a href="#reservoir">reservoir</a>
                             </li>
                             <li>
-                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Protected</span>
                                 <a href="#sum">sum</a>
                             </li>
                             <li>
@@ -384,7 +386,7 @@
                         <a name="bucketCounts"></a>
                         <span class="name">
                             <b>
-                                <span class="modifier">Private</span>
+                                <span class="modifier">Protected</span>
                                 <span class="modifier">Readonly</span>
                             bucketCounts
                             </b>
@@ -431,7 +433,8 @@
                         <a name="buckets"></a>
                         <span class="name">
                             <b>
-                                <span class="modifier">Private</span>
+                                <span class="modifier">Protected</span>
+                                <span class="modifier">Readonly</span>
                             buckets
                             </b>
                             <a href="#buckets"><span class="icon ion-ios-link"></span></a>
@@ -472,7 +475,7 @@
                         <a name="count"></a>
                         <span class="name">
                             <b>
-                                <span class="modifier">Private</span>
+                                <span class="modifier">Protected</span>
                             count
                             </b>
                             <a href="#count"><span class="icon ion-ios-link"></span></a>
@@ -518,7 +521,8 @@
                         <a name="reservoir"></a>
                         <span class="name">
                             <b>
-                                <span class="modifier">Private</span>
+                                <span class="modifier">Protected</span>
+                                <span class="modifier">Readonly</span>
                             reservoir
                             </b>
                             <a href="#reservoir"><span class="icon ion-ios-link"></span></a>
@@ -559,7 +563,7 @@
                         <a name="sum"></a>
                         <span class="name">
                             <b>
-                                <span class="modifier">Private</span>
+                                <span class="modifier">Protected</span>
                             sum
                             </b>
                             <a href="#sum"><span class="icon ion-ios-link"></span></a>
@@ -2329,7 +2333,7 @@ export class Histogram extends BaseMetric implements BucketCounting, Counting, M
      * @type {Reservoir}
      * @memberof Histogram
      */
-    private reservoir: Reservoir;
+    protected readonly reservoir: Reservoir;
     /**
      * Continuous number representing the update operations executed.
      *
@@ -2337,7 +2341,7 @@ export class Histogram extends BaseMetric implements BucketCounting, Counting, M
      * @type {number}
      * @memberof Histogram
      */
-    private count: number &#x3D; 0;
+    protected count: number &#x3D; 0;
     /**
      * Sum of all values.
      *
@@ -2345,7 +2349,7 @@ export class Histogram extends BaseMetric implements BucketCounting, Counting, M
      * @type {number}
      * @memberof Histogram
      */
-    private sum: Int64Wrapper &#x3D; new Int64Wrapper();
+    protected sum: Int64Wrapper &#x3D; new Int64Wrapper();
     /**
      * Contains all countings based on {@link Histogram#buckets}.
      *
@@ -2353,7 +2357,7 @@ export class Histogram extends BaseMetric implements BucketCounting, Counting, M
      * @type {{ [boundary: number]: number }}
      * @memberof Histogram
      */
-    private readonly bucketCounts: Map&lt;number, number&gt; &#x3D; new Map();
+    protected readonly bucketCounts: Map&lt;number, number&gt; &#x3D; new Map();
     /**
      * The bucket config used to count.
      *
@@ -2361,7 +2365,7 @@ export class Histogram extends BaseMetric implements BucketCounting, Counting, M
      * @type {Buckets}
      * @memberof Histogram
      */
-    private buckets: Buckets;
+    protected readonly buckets: Buckets;
 
     /**
      * Creates an instance of Histogram.
