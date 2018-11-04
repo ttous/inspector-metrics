@@ -18,10 +18,7 @@
         </div>
 
         <div class="xs-menu menu" id="mobile-menu">
-                <div id="book-search-input" role="search">
-    <input type="text" placeholder="Type to search">
-</div>
-            <compodoc-menu></compodoc-menu>
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
         </div>
 
         <div class="container-fluid main">
@@ -60,10 +57,13 @@
                 <td class="col-md-4">
                     <ul class="index-list">
                         <li>
+                            <a href="#MetricType" title="lib/metrics/reporter/metric-type.ts"><b>MetricType</b>&nbsp;&nbsp;&nbsp;(lib/.../metric-type.ts)</a>
+                        </li>
+                        <li>
                             <a href="#NameFactory" title="lib/metrics/metric-registry.ts"><b>NameFactory</b>&nbsp;&nbsp;&nbsp;(lib/.../metric-registry.ts)</a>
                         </li>
                         <li>
-                            <a href="#Scheduler" title="lib/metrics/logger-reporter.ts"><b>Scheduler</b>&nbsp;&nbsp;&nbsp;(lib/.../logger-reporter.ts)</a>
+                            <a href="#Scheduler" title="lib/metrics/reporter/scheduled-reporter.ts"><b>Scheduler</b>&nbsp;&nbsp;&nbsp;(lib/.../scheduled-reporter.ts)</a>
                         </li>
                         <li>
                             <a href="#ValueExtractor" title="lib/metrics/size-gauge.ts"><b>ValueExtractor</b>&nbsp;&nbsp;&nbsp;(lib/.../size-gauge.ts)</a>
@@ -75,6 +75,31 @@
     </table>
 </section>
 
+    <h3>lib/metrics/reporter/metric-type.ts</h3>
+    <section>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="MetricType"></a>
+                        <span class="name"><b>MetricType</b><a href="#MetricType"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-description"><p>Enumeration of all metric types.</p>
+</div>
+                        </td>
+                    </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <code>MetricType:     <code>&quot;counter&quot; | &quot;gauge&quot; | &quot;histogram&quot; | &quot;meter&quot; | &quot;timer&quot;</code>
+</code>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
     <h3>lib/metrics/metric-registry.ts</h3>
     <section>
         <table class="table table-sm table-bordered">
@@ -94,7 +119,7 @@
             </tbody>
         </table>
 </section>
-    <h3>lib/metrics/logger-reporter.ts</h3>
+    <h3>lib/metrics/reporter/scheduled-reporter.ts</h3>
     <section>
         <table class="table table-sm table-bordered">
             <tbody>
@@ -104,6 +129,12 @@
                         <span class="name"><b>Scheduler</b><a href="#Scheduler"><span class="icon ion-ios-link"></span></a></span>
                     </td>
                 </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-description"><p>Scheduler function type definition.</p>
+</div>
+                        </td>
+                    </tr>
                 <tr>
                     <td class="col-md-4">
                         <code>Scheduler:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/function" target="_blank" >function</a></code>
@@ -157,7 +188,9 @@
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
-       <script src="../js/menu-wc.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>
 

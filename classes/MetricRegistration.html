@@ -18,10 +18,7 @@
         </div>
 
         <div class="xs-menu menu" id="mobile-menu">
-                <div id="book-search-input" role="search">
-    <input type="text" placeholder="Type to search">
-</div>
-            <compodoc-menu></compodoc-menu>
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
         </div>
 
         <div class="container-fluid main">
@@ -918,10 +915,7 @@ export class MetricRegistry extends BaseMetric implements MetricSet {
      */
     public newCounter(name: string, group: string &#x3D; null, description: string &#x3D; null): Counter {
         const counter &#x3D; new Counter(name, description);
-        if (!!group) {
-            counter.setGroup(group);
-        }
-        this.register(counter.getName(), counter);
+        this.registerMetric(counter, group, description);
         return counter;
     }
 
@@ -937,10 +931,7 @@ export class MetricRegistry extends BaseMetric implements MetricSet {
      */
     public newMonotoneCounter(name: string, group: string &#x3D; null, description: string &#x3D; null): MonotoneCounter {
         const counter &#x3D; new MonotoneCounter(name, description);
-        if (!!group) {
-            counter.setGroup(group);
-        }
-        this.register(counter.getName(), counter);
+        this.registerMetric(counter, group, description);
         return counter;
     }
 
@@ -964,10 +955,7 @@ export class MetricRegistry extends BaseMetric implements MetricSet {
         description: string &#x3D; null): Meter {
 
         const meter &#x3D; new Meter(clock, sampleRate, name, description);
-        if (!!group) {
-            meter.setGroup(group);
-        }
-        this.register(meter.getName(), meter);
+        this.registerMetric(meter, group, description);
         return meter;
     }
 
@@ -996,10 +984,7 @@ export class MetricRegistry extends BaseMetric implements MetricSet {
         buckets: Buckets &#x3D; new Buckets()): HdrHistogram {
 
         const histogram &#x3D; new HdrHistogram(lowest, max, figures, name, description, buckets);
-        if (!!group) {
-            histogram.setGroup(group);
-        }
-        this.register(histogram.getName(), histogram);
+        this.registerMetric(histogram, group, description);
         return histogram;
     }
 
@@ -1025,10 +1010,7 @@ export class MetricRegistry extends BaseMetric implements MetricSet {
             reservoir &#x3D; new SlidingWindowReservoir(1024);
         }
         const histogram &#x3D; new Histogram(reservoir, name, description, buckets);
-        if (!!group) {
-            histogram.setGroup(group);
-        }
-        this.register(histogram.getName(), histogram);
+        this.registerMetric(histogram, group, description);
         return histogram;
     }
 
@@ -1056,10 +1038,7 @@ export class MetricRegistry extends BaseMetric implements MetricSet {
             reservoir &#x3D; new SlidingWindowReservoir(1024);
         }
         const timer &#x3D; new Timer(clock, reservoir, name, description, buckets);
-        if (!!group) {
-            timer.setGroup(group);
-        }
-        this.register(timer.getName(), timer);
+        this.registerMetric(timer, group, description);
         return timer;
     }
 
@@ -1238,7 +1217,9 @@ export class MetricRegistry extends BaseMetric implements MetricSet {
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
-       <script src="../js/menu-wc.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>
 

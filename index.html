@@ -18,10 +18,7 @@
         </div>
 
         <div class="xs-menu menu" id="mobile-menu">
-                <div id="book-search-input" role="search">
-    <input type="text" placeholder="Type to search">
-</div>
-            <compodoc-menu></compodoc-menu>
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
         </div>
 
         <div class="container-fluid main">
@@ -73,6 +70,7 @@ to use the library.</p>
 <p>Some other reporter:</p>
 <ul>
 <li><a href="https://github.com/rstiller/inspector-carbon">Carbon / Graphite</a></li>
+<li><a href="https://github.com/rstiller/inspector-csv">CSV</a></li>
 <li><a href="https://github.com/rstiller/inspector-elasticsearch">Elasticsearch</a></li>
 <li><a href="https://github.com/rstiller/inspector-influx">Influx</a></li>
 <li><a href="https://github.com/rstiller/inspector-prometheus">Prometheus / Pushgateway</a></li>
@@ -293,7 +291,15 @@ registry.registerMetric(capacity, &quot;buffer&quot;);
 // counts the number of allocations during the execution of the application
 registry.newCounter(&quot;newAllocations&quot;, &quot;buffer&quot;);
 
-// the reporter can now report the values as a single measurement point if supported ...</code></pre></div><h2 id="license">License</h2>
+// the reporter can now report the values as a single measurement point if supported ...</code></pre></div><h2 id="local-dev">local dev</h2>
+<h3 id="compile-test-with-different-nodejs-versions">compile &amp; test with different nodejs versions</h3>
+<p>build docker images:  </p>
+<div><pre class="line-numbers"><code class="language-bash">docker-compose build</code></pre></div><p>run tests:  </p>
+<div><pre class="line-numbers"><code class="language-bash">docker-compose run node6
+docker-compose run node7
+docker-compose run node8
+docker-compose run node9
+docker-compose run node10</code></pre></div><h2 id="license">License</h2>
 <p><a href="https://www.opensource.org/licenses/mit-license.php">MIT</a></p>
 
 
@@ -335,7 +341,9 @@ registry.newCounter(&quot;newAllocations&quot;, &quot;buffer&quot;);
 
        <script src="./js/libs/custom-elements.min.js"></script>
        <script src="./js/libs/lit-html.js"></script>
-       <script src="./js/menu-wc.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="./js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="./js/menu-wc.js" defer></script>
 
        <script src="./js/libs/bootstrap-native.js"></script>
 

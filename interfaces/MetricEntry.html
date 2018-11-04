@@ -43,7 +43,7 @@
 
 <ol class="breadcrumb">
   <li>Interfaces</li>
-  <li>SizeAttributeInterface</li>
+  <li>MetricEntry</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -61,14 +61,21 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>lib/metrics/size-gauge.ts</code>
+            <code>lib/metrics/reporter/metric-entry.ts</code>
         </p>
 
             <p class="comment">
                 <h3>Description</h3>
             </p>
             <p class="comment">
-                <p>Accessor-interface for objects with &quot;size&quot; attribute (e.g. Map, Set).</p>
+                <p>Utility interface to track report-timestamps and -values of metric instances.
+This is directly linked to the minimum-reporting timeout of the <a href="BaseReporter">BaseReporter</a>,
+which ensures that a certain value gets reported at least in a certain amount of time
+e.g. every minute without the value having changed. And on the other hand
+to not report / include values that haven&#39;t changed.</p>
+<p>An example for this is the health status of an application (a gauge: 1 means healthy, 0 means unhealthy)
+which you normally want to report every minute for your graphs but should not
+necessarily be included in every reporting run with the same value.</p>
 
             </p>
 
@@ -86,7 +93,10 @@
                         <td class="col-md-4">
                             <ul class="index-list">
                                 <li>
-                                        <a href="#size">size</a>
+                                        <a href="#lastReport">lastReport</a>
+                                </li>
+                                <li>
+                                        <a href="#lastValue">lastValue</a>
                                 </li>
                             </ul>
                         </td>
@@ -103,13 +113,13 @@
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
-                                        <a name="size"></a>
-                                        <span class="name"><b>size</b><a href="#size"><span class="icon ion-ios-link"></span></a></span>
+                                        <a name="lastReport"></a>
+                                        <span class="name"><b>lastReport</b><a href="#lastReport"><span class="icon ion-ios-link"></span></a></span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>size:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                        <code>lastReport:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
 </code>
                                     </td>
                                 </tr>
@@ -126,6 +136,47 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>timestamp of the latest report.</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="lastValue"></a>
+                                        <span class="name"><b>lastValue</b><a href="#lastValue"><span class="icon ion-ios-link"></span></a></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>lastValue:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>value that got reported as latest.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
             </section>
@@ -135,162 +186,34 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import &quot;source-map-support/register&quot;;
 
-import { Gauge } from &quot;./gauge&quot;;
-import { BaseMetric } from &quot;./metric&quot;;
-
 /**
- * Accessor-interface for objects with &quot;length()&quot; method.
+ * Utility interface to track report-timestamps and -values of metric instances.
+ * This is directly linked to the minimum-reporting timeout of the {@link BaseReporter},
+ * which ensures that a certain value gets reported at least in a certain amount of time
+ * e.g. every minute without the value having changed. And on the other hand
+ * to not report / include values that haven&#x27;t changed.
  *
- * @export
- * @interface LengthMethodInterface
- */
-export interface LengthMethodInterface {
-    length(): number;
-}
-
-/**
- * Accessor-interface for objects with &quot;length&quot; attribute (e.g. Array).
+ * An example for this is the health status of an application (a gauge: 1 means healthy, 0 means unhealthy)
+ * which you normally want to report every minute for your graphs but should not
+ * necessarily be included in every reporting run with the same value.
  *
- * @export
- * @interface LengthAttributeInterface
+ * @interface MetricEntry
  */
-export interface LengthAttributeInterface {
-    length: number;
-}
-
-/**
- * Accessor-interface for objects with &quot;size&quot; method.
- *
- * @export
- * @interface SizeMethodInterface
- */
-export interface SizeMethodInterface {
-    size(): number;
-}
-
-/**
- * Accessor-interface for objects with &quot;size&quot; attribute (e.g. Map, Set).
- *
- * @export
- * @interface SizeAttributeInterface
- */
-export interface SizeAttributeInterface {
-    size: number;
-}
-
-type ValueExtractor &#x3D; () &#x3D;&gt; number;
-
-/**
- * Gets the current size / length of an object as gauge metric.
- *
- * @export
- * @class SizeGauge
- * @extends {BaseMetric}
- * @implements {Gauge&lt;number&gt;}
- */
-export class SizeGauge extends BaseMetric implements Gauge&lt;number&gt; {
-
+export interface MetricEntry {
     /**
-     * Checks if the specified collection is a {link LengthAttributeInterface}.
+     * timestamp of the latest report.
      *
-     * @protected
-     * @static
-     * @param {*} collection
-     * @returns {collection is LengthAttributeInterface}
-     * @memberof SizeGauge
+     * @type {number}
+     * @memberof MetricEntry
      */
-    protected static isLengthAttributeInterface(collection: any): collection is LengthAttributeInterface {
-        return collection &amp;&amp; typeof collection.length &#x3D;&#x3D;&#x3D; &quot;number&quot;;
-    }
-
+    lastReport: number;
     /**
-     * Checks if the specified collection is a {link LengthMethodInterface}.
+     * value that got reported as latest.
      *
-     * @protected
-     * @static
-     * @param {*} collection
-     * @returns {collection is LengthMethodInterface}
-     * @memberof SizeGauge
+     * @type {number}
+     * @memberof MetricEntry
      */
-    protected static isLengthMethodInterface(collection: any): collection is LengthMethodInterface {
-        return collection &amp;&amp; typeof collection.length &#x3D;&#x3D;&#x3D; &quot;function&quot;;
-    }
-
-    /**
-     * Checks if the specified collection is a {link SizeAttributeInterface}.
-     *
-     * @protected
-     * @static
-     * @param {*} collection
-     * @returns {collection is SizeAttributeInterface}
-     * @memberof SizeGauge
-     */
-    protected static isSizeAttributeInterface(collection: any): collection is SizeAttributeInterface {
-        return collection &amp;&amp; typeof collection.size &#x3D;&#x3D;&#x3D; &quot;number&quot;;
-    }
-
-    /**
-     * Checks if the specified collection is a {link SizeMethodInterface}.
-     *
-     * @protected
-     * @static
-     * @param {*} collection
-     * @returns {collection is SizeMethodInterface}
-     * @memberof SizeGauge
-     */
-    protected static isSizeMethodInterface(collection: any): collection is SizeMethodInterface {
-        return collection &amp;&amp; typeof collection.size &#x3D;&#x3D;&#x3D; &quot;function&quot;;
-    }
-
-    /**
-     * Gets the actual value for the collection passed to the constructor.
-     *
-     * @private
-     * @type {ValueExtractor}
-     * @memberof SizeGauge
-     */
-    private extractor: ValueExtractor;
-
-    /**
-     * Creates an instance of SizeGauge.
-     *
-     * @param {string} name The name of the metric
-     * @param collection The collection to get the size / length from.
-     * @param {string} [description] The description of the metric
-     * @memberof SizeGauge
-     */
-    public constructor(
-        name: string,
-        collection: LengthAttributeInterface | LengthMethodInterface | SizeAttributeInterface | SizeMethodInterface,
-        description?: string) {
-
-        super();
-        this.setName(name);
-        this.setDescription(description);
-
-        if (SizeGauge.isLengthAttributeInterface(collection)) {
-            this.extractor &#x3D; () &#x3D;&gt; collection.length;
-        } else if (SizeGauge.isLengthMethodInterface(collection)) {
-            this.extractor &#x3D; () &#x3D;&gt; collection.length();
-        } else if (SizeGauge.isSizeAttributeInterface(collection)) {
-            this.extractor &#x3D; () &#x3D;&gt; collection.size;
-        } else if (SizeGauge.isSizeMethodInterface(collection)) {
-            this.extractor &#x3D; () &#x3D;&gt; collection.size();
-        } else {
-            this.extractor &#x3D; () &#x3D;&gt; -1;
-        }
-    }
-
-    /**
-     * Reports the size / length of the collection.
-     *
-     * @returns {number} Returns the current size of the collection or -1.
-     * @memberof SizeGauge
-     */
-    public getValue(): number {
-        return this.extractor();
-    }
-
+    lastValue: number;
 }
 </code></pre>
     </div>
@@ -318,7 +241,7 @@ export class SizeGauge extends BaseMetric implements Gauge&lt;number&gt; {
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'interface';
-            var COMPODOC_CURRENT_PAGE_URL = 'SizeAttributeInterface.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'MetricEntry.html';
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>
