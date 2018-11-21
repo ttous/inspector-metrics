@@ -66,6 +66,10 @@ to use the library.</p>
 <li>Meter - measures the rate of events over time (e.g. &quot;requests per second&quot;)</li>
 <li>Timer - measures call-rate of a function and the distribution of the duration of all calls</li>
 </ul>
+<p>There are libraries which collect some metrics:</p>
+<ul>
+<li><a href="https://github.com/rstiller/inspector-vm">node VM</a> - collects memory &amp; garbage collection metric for node VM</li>
+</ul>
 <p>The library ships with a default <code>console</code> <code>MetricReporter</code>.</p>
 <p>Some other reporter:</p>
 <ul>
@@ -80,7 +84,9 @@ to use the library.</p>
 // a registry is a collection of metric objects
 const registry = new MetricRegistry();
 // the reporter prints the stats
-const reporter = new LoggerReporter(global.console);
+const reporter = new LoggerReporter({
+    log: global.console,
+});
 // a new timer instance
 const requests: Timer = registry.newTimer(&quot;requests&quot;);
 
@@ -92,9 +98,10 @@ setInterval(() =&gt; {
     // should report a few milliseconds
     requests.time(() =&gt; {
         let a = 0;
+        // tslint:disable-next-line:prefer-const
         let b = 1;
         for (let i = 0; i &lt; 1e6; i++) {
-            a = b + i;
+            a = b + i + a;
         }
     });
 }, 100);</code></pre></div><h3 id="counter">Counter</h3>
@@ -299,7 +306,27 @@ registry.newCounter(&quot;newAllocations&quot;, &quot;buffer&quot;);
 docker-compose run node7
 docker-compose run node8
 docker-compose run node9
-docker-compose run node10</code></pre></div><h2 id="license">License</h2>
+docker-compose run node10</code></pre></div><h3 id="releaseing-publish-docs">releaseing / publish docs</h3>
+<div><pre class="line-numbers"><code class="language-text"># check functionality
+npm i
+npm run build
+
+# release
+git commit -am &quot;release of a.b.c&quot;
+git push
+git tag va.b.c
+git push --tags
+
+# publish docs
+rm -fr docs/
+git branch -D gh-pages
+git worktree prune
+git worktree list
+git worktree add -b gh-pages docs origin/gh-pages
+npm run publishDocs
+
+# publish package
+npm publish</code></pre></div><h2 id="license">License</h2>
 <p><a href="https://www.opensource.org/licenses/mit-license.php">MIT</a></p>
 
 
