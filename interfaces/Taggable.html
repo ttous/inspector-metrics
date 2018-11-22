@@ -247,7 +247,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">lib/metrics/taggable.ts:43</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">lib/metrics/taggable.ts:45</a></div>
                             </td>
                         </tr>
 
@@ -285,13 +285,6 @@
                             </div>
                             <div>
                             </div>
-                            <div class="io-description">
-                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                            </div>
-                                <div class="io-description">
-                                    
-                                </div>
                     </td>
                 </tr>
             </tbody>
@@ -318,7 +311,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">lib/metrics/taggable.ts:35</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">lib/metrics/taggable.ts:36</a></div>
                             </td>
                         </tr>
 
@@ -368,13 +361,6 @@
                             </div>
                             <div>
                             </div>
-                            <div class="io-description">
-                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                            </div>
-                                <div class="io-description">
-                                    
-                                </div>
                     </td>
                 </tr>
             </tbody>
@@ -418,17 +404,19 @@ export interface Taggable {
      *
      * @param {string} name
      * @param {string} value
+     * @returns {this}
      * @memberof Taggable
      */
-    setTag(name: string, value: string): void;
+    setTag(name: string, value: string): this;
 
     /**
      * Removes the specified tag.
      *
      * @param {string} name
+     * @returns {this}
      * @memberof Taggable
      */
-    removeTag(name: string): void;
+    removeTag(name: string): this;
 
 }
 </code></pre>

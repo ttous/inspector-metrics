@@ -346,7 +346,7 @@ not be reflected in the map returned here.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">lib/metrics/metadata-container.ts:49</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">lib/metrics/metadata-container.ts:50</a></div>
                             </td>
                         </tr>
 
@@ -413,13 +413,6 @@ not be reflected in the map returned here.</p>
                             </div>
                             <div>
                             </div>
-                            <div class="io-description">
-                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                            </div>
-                                <div class="io-description">
-                                    
-                                </div>
                     </td>
                 </tr>
             </tbody>
@@ -477,10 +470,10 @@ export interface MetadataContainer {
      * @template T
      * @param {string} name The key of the metadata
      * @param {T} value any value
+     * @returns {this}
      * @memberof MetadataContainer
      */
-    setMetadata&lt;T&gt;(name: string, value: T): void;
-
+    setMetadata&lt;T&gt;(name: string, value: T): this;
 }
 </code></pre>
     </div>

@@ -260,7 +260,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">lib/metrics/int64.ts:39</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">lib/metrics/int64.ts:40</a></div>
                             </td>
                         </tr>
 
@@ -298,13 +298,6 @@
                             </div>
                             <div>
                             </div>
-                            <div class="io-description">
-                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                            </div>
-                                <div class="io-description">
-                                    
-                                </div>
                     </td>
                 </tr>
             </tbody>
@@ -333,7 +326,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">lib/metrics/int64.ts:49</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">lib/metrics/int64.ts:51</a></div>
                             </td>
                         </tr>
 
@@ -380,7 +373,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">lib/metrics/int64.ts:59</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">lib/metrics/int64.ts:61</a></div>
                             </td>
                         </tr>
 
@@ -447,10 +440,12 @@ export class Int64Wrapper {
      * Adds the specified value.
      *
      * @param {number} value
+     * @returns {this}
      * @memberof Int64Wrapper
      */
-    public add(value: number): void {
+    public add(value: number): this {
         this.num &#x3D; this.num.add(value);
+        return this;
     }
 
     /**

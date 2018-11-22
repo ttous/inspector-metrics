@@ -158,7 +158,7 @@ at the beginning if the maximum number of values is reached.</p>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="149" class="link-to-prism">lib/metrics/reservoir.ts:149</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="152" class="link-to-prism">lib/metrics/reservoir.ts:152</a></div>
                             </td>
                         </tr>
 
@@ -236,7 +236,7 @@ at the beginning if the maximum number of values is reached.</p>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="149" class="link-to-prism">lib/metrics/reservoir.ts:149</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="152" class="link-to-prism">lib/metrics/reservoir.ts:152</a></div>
                             </td>
                         </tr>
 
@@ -277,7 +277,7 @@ at the beginning if the maximum number of values is reached.</p>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="141" class="link-to-prism">lib/metrics/reservoir.ts:141</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="144" class="link-to-prism">lib/metrics/reservoir.ts:144</a></div>
                             </td>
                         </tr>
 
@@ -323,7 +323,7 @@ at the beginning if the maximum number of values is reached.</p>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="133" class="link-to-prism">lib/metrics/reservoir.ts:133</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="136" class="link-to-prism">lib/metrics/reservoir.ts:136</a></div>
                             </td>
                         </tr>
 
@@ -367,7 +367,7 @@ at the beginning if the maximum number of values is reached.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="167" class="link-to-prism">lib/metrics/reservoir.ts:167</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="170" class="link-to-prism">lib/metrics/reservoir.ts:170</a></div>
                             </td>
                         </tr>
 
@@ -414,7 +414,7 @@ at the beginning if the maximum number of values is reached.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="193" class="link-to-prism">lib/metrics/reservoir.ts:193</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="198" class="link-to-prism">lib/metrics/reservoir.ts:198</a></div>
                             </td>
                         </tr>
 
@@ -461,7 +461,7 @@ at the beginning if the maximum number of values is reached.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="179" class="link-to-prism">lib/metrics/reservoir.ts:179</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="183" class="link-to-prism">lib/metrics/reservoir.ts:183</a></div>
                             </td>
                         </tr>
 
@@ -501,13 +501,6 @@ values is reached, the insertion restarts at the beginning.</p>
                             </div>
                             <div>
                             </div>
-                            <div class="io-description">
-                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                            </div>
-                                <div class="io-description">
-                                    
-                                </div>
                     </td>
                 </tr>
             </tbody>
@@ -547,9 +540,10 @@ export interface Reservoir {
      * Adds a value to the reservoir.
      *
      * @param {number} value
+     * @returns {this}
      * @memberof Reservoir
      */
-    update(value: number): void;
+    update(value: number): this;
 
     /**
      * Creates a new snapshot of this reservoir.
@@ -615,15 +609,17 @@ export class DefaultReservoir implements Reservoir {
      * an old value at a random position is replaced with the specified value.
      *
      * @param {number} value
+     * @returns {this}
      * @memberof DefaultReservoir
      */
-    public update(value: number): void {
+    public update(value: number): this {
         if (this.values.length &lt; this.maxSize) {
             this.values.push(value);
         } else {
             const randomIndex: number &#x3D; Math.round(Math.random() * this.values.length);
             this.values[randomIndex % this.values.length] &#x3D; value;
         }
+        return this;
     }
 
     /**
@@ -699,14 +695,16 @@ export class SlidingWindowReservoir implements Reservoir {
      * values is reached, the insertion restarts at the beginning.
      *
      * @param {number} value
+     * @returns {this}
      * @memberof SlidingWindowReservoir
      */
-    public update(value: number): void {
+    public update(value: number): this {
         if (this.values.length &lt; this.maxSize) {
             this.values.push(value);
         } else {
             this.values[this.index++ % this.values.length] &#x3D; value;
         }
+        return this;
     }
 
     /**

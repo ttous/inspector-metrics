@@ -155,7 +155,7 @@ is reached old values are replaced by new values.</p>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">lib/metrics/reservoir.ts:65</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">lib/metrics/reservoir.ts:66</a></div>
                             </td>
                         </tr>
 
@@ -228,7 +228,7 @@ is reached old values are replaced by new values.</p>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">lib/metrics/reservoir.ts:65</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">lib/metrics/reservoir.ts:66</a></div>
                             </td>
                         </tr>
 
@@ -274,7 +274,7 @@ is reached old values are replaced by new values.</p>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">lib/metrics/reservoir.ts:57</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">lib/metrics/reservoir.ts:58</a></div>
                             </td>
                         </tr>
 
@@ -318,7 +318,7 @@ is reached old values are replaced by new values.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="83" class="link-to-prism">lib/metrics/reservoir.ts:83</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="84" class="link-to-prism">lib/metrics/reservoir.ts:84</a></div>
                             </td>
                         </tr>
 
@@ -365,7 +365,7 @@ is reached old values are replaced by new values.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="110" class="link-to-prism">lib/metrics/reservoir.ts:110</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="113" class="link-to-prism">lib/metrics/reservoir.ts:113</a></div>
                             </td>
                         </tr>
 
@@ -412,7 +412,7 @@ is reached old values are replaced by new values.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="95" class="link-to-prism">lib/metrics/reservoir.ts:95</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="97" class="link-to-prism">lib/metrics/reservoir.ts:97</a></div>
                             </td>
                         </tr>
 
@@ -452,13 +452,6 @@ an old value at a random position is replaced with the specified value.</p>
                             </div>
                             <div>
                             </div>
-                            <div class="io-description">
-                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                            </div>
-                                <div class="io-description">
-                                    
-                                </div>
                     </td>
                 </tr>
             </tbody>
@@ -498,9 +491,10 @@ export interface Reservoir {
      * Adds a value to the reservoir.
      *
      * @param {number} value
+     * @returns {this}
      * @memberof Reservoir
      */
-    update(value: number): void;
+    update(value: number): this;
 
     /**
      * Creates a new snapshot of this reservoir.
@@ -566,15 +560,17 @@ export class DefaultReservoir implements Reservoir {
      * an old value at a random position is replaced with the specified value.
      *
      * @param {number} value
+     * @returns {this}
      * @memberof DefaultReservoir
      */
-    public update(value: number): void {
+    public update(value: number): this {
         if (this.values.length &lt; this.maxSize) {
             this.values.push(value);
         } else {
             const randomIndex: number &#x3D; Math.round(Math.random() * this.values.length);
             this.values[randomIndex % this.values.length] &#x3D; value;
         }
+        return this;
     }
 
     /**
@@ -650,14 +646,16 @@ export class SlidingWindowReservoir implements Reservoir {
      * values is reached, the insertion restarts at the beginning.
      *
      * @param {number} value
+     * @returns {this}
      * @memberof SlidingWindowReservoir
      */
-    public update(value: number): void {
+    public update(value: number): this {
         if (this.values.length &lt; this.maxSize) {
             this.values.push(value);
         } else {
             this.values[this.index++ % this.values.length] &#x3D; value;
         }
+        return this;
     }
 
     /**

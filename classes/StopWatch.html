@@ -358,7 +358,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">lib/metrics/timer.ts:66</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">lib/metrics/timer.ts:67</a></div>
                             </td>
                         </tr>
 
@@ -368,9 +368,7 @@
                             <div class="io-description"><p>Sets the startTime variable.</p>
 </div>
 
-                            <div class="io-description">
-                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
+                            <div>
                             </div>
                     </td>
                 </tr>
@@ -400,7 +398,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="76" class="link-to-prism">lib/metrics/timer.ts:76</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="79" class="link-to-prism">lib/metrics/timer.ts:79</a></div>
                             </td>
                         </tr>
 
@@ -411,9 +409,7 @@
 and this invocation to the timer in nanoseconds.</p>
 </div>
 
-                            <div class="io-description">
-                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
+                            <div>
                             </div>
                     </td>
                 </tr>
@@ -493,20 +489,24 @@ export class StopWatch {
     /**
      * Sets the startTime variable.
      *
+     * @returns {this}
      * @memberof StopWatch
      */
-    public start(): void {
+    public start(): this {
         this.startTime &#x3D; this.clock.time();
+        return this;
     }
 
     /**
      * Adds the duration between the last invocation of the start function
      * and this invocation to the timer in nanoseconds.
      *
+     * @returns {this}
      * @memberof StopWatch
      */
-    public stop(): void {
+    public stop(): this {
         this.timer.addDuration(diff(this.startTime, this.clock.time()), NANOSECOND);
+        return this;
     }
 
 }
@@ -578,13 +578,15 @@ export class Timer extends BaseMetric implements BucketCounting, Metered, Sampli
      *
      * @param {number} duration
      * @param {TimeUnit} unit
+     * @returns {this}
      * @memberof Timer
      */
-    public addDuration(duration: number, unit: TimeUnit): void {
+    public addDuration(duration: number, unit: TimeUnit): this {
         if (duration &gt;&#x3D; 0) {
             this.histogram.update(unit.convertTo(duration, NANOSECOND));
             this.meter.mark(1);
         }
+        return this;
     }
 
     /**
@@ -681,13 +683,14 @@ export class Timer extends BaseMetric implements BucketCounting, Metered, Sampli
      * Measures the duration of the passed function&#x27;s invocation
      * synchronously and adds it to the pool.
      *
-     * @returns {number}
+     * @template T
+     * @returns {T}
      * @memberof Timer
      */
-    public time(f: () &#x3D;&gt; void): void {
+    public time&lt;T&gt;(f: () &#x3D;&gt; T): T {
         const startTime: Time &#x3D; this.clock.time();
         try {
-            f();
+            return f();
         } finally {
             this.addDuration(diff(startTime, this.clock.time()), NANOSECOND);
         }
@@ -697,14 +700,16 @@ export class Timer extends BaseMetric implements BucketCounting, Metered, Sampli
      * Measures the duration of the passed function&#x27;s invocation
      * asynchronously and adds it to the pool.
      *
-     * @returns {number}
+     * @template T
+     * @returns {T}
      * @memberof Timer
      */
-    public timeAsync(f: () &#x3D;&gt; Promise&lt;any&gt;): Promise&lt;void&gt; {
+    public timeAsync&lt;T&gt;(f: () &#x3D;&gt; Promise&lt;T&gt;): Promise&lt;T&gt; {
         const startTime: Time &#x3D; this.clock.time();
         return f()
-            .then(() &#x3D;&gt; {
+            .then((res) &#x3D;&gt; {
                 this.addDuration(diff(startTime, this.clock.time()), NANOSECOND);
+                return res;
             })
             .catch((err) &#x3D;&gt; {
                 this.addDuration(diff(startTime, this.clock.time()), NANOSECOND);

@@ -171,7 +171,7 @@ of a metric is used in some metric-reporter.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">lib/metrics/groupable.ts:26</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">lib/metrics/groupable.ts:27</a></div>
                             </td>
                         </tr>
 
@@ -214,13 +214,6 @@ of a metric is used in some metric-reporter.</p>
                             </div>
                             <div>
                             </div>
-                            <div class="io-description">
-                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                            </div>
-                                <div class="io-description">
-                                    
-                                </div>
                     </td>
                 </tr>
             </tbody>
@@ -255,9 +248,10 @@ export interface Groupable {
      * Sets the group name.
      *
      * @param {string} group the new group name
+     * @returns {this}
      * @memberof Groupable
      */
-    setGroup(group: string): void;
+    setGroup(group: string): this;
 
 }
 </code></pre>

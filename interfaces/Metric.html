@@ -137,7 +137,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">lib/metrics/metric.ts:39</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">lib/metrics/metric.ts:40</a></div>
                             </td>
                         </tr>
 
@@ -227,7 +227,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">lib/metrics/metric.ts:47</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">lib/metrics/metric.ts:49</a></div>
                             </td>
                         </tr>
 
@@ -265,13 +265,6 @@
                             </div>
                             <div>
                             </div>
-                            <div class="io-description">
-                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                            </div>
-                                <div class="io-description">
-                                    
-                                </div>
                     </td>
                 </tr>
             </tbody>
@@ -298,7 +291,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">lib/metrics/metric.ts:31</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">lib/metrics/metric.ts:32</a></div>
                             </td>
                         </tr>
 
@@ -336,13 +329,6 @@
                             </div>
                             <div>
                             </div>
-                            <div class="io-description">
-                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                            </div>
-                                <div class="io-description">
-                                    
-                                </div>
                     </td>
                 </tr>
             </tbody>
@@ -382,9 +368,10 @@ export interface Metric extends Groupable, MetadataContainer, Taggable {
      * Sets the name of the metric.
      *
      * @param {string} name
+     * @returns {this}
      * @memberof Metric
      */
-    setName(name: string): void;
+    setName(name: string): this;
 
     /**
      * Gets the description of the metric.
@@ -398,9 +385,10 @@ export interface Metric extends Groupable, MetadataContainer, Taggable {
      * Sets the description of the metric.
      *
      * @param {string} description
+     * @returns {this}
      * @memberof Metric
      */
-    setDescription(description: string): void;
+    setDescription(description: string): this;
 
 }
 
@@ -488,32 +476,36 @@ export abstract class BaseMetric implements Metric {
         return value;
     }
 
-    public setMetadata&lt;T&gt;(name: string, value: T): void {
+    public setMetadata&lt;T&gt;(name: string, value: T): this {
         this.metadata.set(name, value);
+        return this;
     }
 
     public getName(): string {
         return this.name;
     }
 
-    public setName(name: string): void {
+    public setName(name: string): this {
         this.name &#x3D; name;
+        return this;
     }
 
     public getDescription(): string {
         return this.description;
     }
 
-    public setDescription(description: string): void {
+    public setDescription(description: string): this {
         this.description &#x3D; description;
+        return this;
     }
 
     public getGroup(): string {
         return this.group;
     }
 
-    public setGroup(group: string): void {
+    public setGroup(group: string): this {
         this.group &#x3D; group;
+        return this;
     }
 
     public getTags(): Map&lt;string, string&gt; {
@@ -524,12 +516,14 @@ export abstract class BaseMetric implements Metric {
         return this.tags.get(name);
     }
 
-    public setTag(name: string, value: string): void {
+    public setTag(name: string, value: string): this {
         this.tags.set(name, value);
+        return this;
     }
 
-    public removeTag(name: string): void {
+    public removeTag(name: string): this {
         this.tags.delete(name);
+        return this;
     }
 
     public toString(): string {

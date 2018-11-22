@@ -248,7 +248,7 @@ e.g. 500 per second or 0.5 per millisecond or 30.000 per minute.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">lib/metrics/moving-average.ts:45</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">lib/metrics/moving-average.ts:47</a></div>
                             </td>
                         </tr>
 
@@ -259,9 +259,7 @@ e.g. 500 per second or 0.5 per millisecond or 30.000 per minute.</p>
 A tick represents an update event.</p>
 </div>
 
-                            <div class="io-description">
-                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
+                            <div>
                             </div>
                     </td>
                 </tr>
@@ -289,7 +287,7 @@ A tick represents an update event.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">lib/metrics/moving-average.ts:37</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">lib/metrics/moving-average.ts:38</a></div>
                             </td>
                         </tr>
 
@@ -327,13 +325,6 @@ A tick represents an update event.</p>
                             </div>
                             <div>
                             </div>
-                            <div class="io-description">
-                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                            </div>
-                                <div class="io-description">
-                                    
-                                </div>
                     </td>
                 </tr>
             </tbody>
@@ -379,17 +370,19 @@ export interface MovingAverage {
      * Adds the given value to the logic of the implementation.
      *
      * @param {number} value
+     * @returns {this}
      * @memberof MovingAverage
      */
-    update(value: number): void;
+    update(value: number): this;
 
     /**
      * Triggers the actual average to be updated.
      * A tick represents an update event.
      *
+     * @returns {this}
      * @memberof MovingAverage
      */
-    tick(): void;
+    tick(): this;
 }
 
 /**
@@ -510,10 +503,12 @@ export class ExponentiallyWeightedMovingAverage implements MovingAverage {
      * Adds the value to the current sum.
      *
      * @param {number} value
+     * @returns {this}
      * @memberof ExponentiallyWeightedMovingAverage
      */
-    public update(value: number): void {
+    public update(value: number): this {
         this.sum +&#x3D; value;
+        return this;
     }
 
     /**
@@ -524,9 +519,10 @@ export class ExponentiallyWeightedMovingAverage implements MovingAverage {
      *
      * If the alpha value is high the last average has more weight and vice versa.
      *
+     * @returns {this}
      * @memberof ExponentiallyWeightedMovingAverage
      */
-    public tick(): void {
+    public tick(): this {
         const sum &#x3D; this.sum;
         const avg &#x3D; sum / this.interval;
         this.sum -&#x3D; sum;
@@ -536,8 +532,8 @@ export class ExponentiallyWeightedMovingAverage implements MovingAverage {
         } else {
             this.avg +&#x3D; this.alpha * (avg - this.avg);
         }
+        return this;
     }
-
 }
 </code></pre>
     </div>
