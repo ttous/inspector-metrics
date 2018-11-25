@@ -149,6 +149,7 @@
 
 import { StdClock } from &quot;../clock&quot;;
 import { Counter, MonotoneCounter } from &quot;../counter&quot;;
+import { Event } from &quot;../event&quot;;
 import { Gauge } from &quot;../gauge&quot;;
 import { Histogram } from &quot;../histogram&quot;;
 import { Meter } from &quot;../meter&quot;;
@@ -284,6 +285,25 @@ export class LoggerReporter extends ScheduledMetricReporter&lt;LoggerReporterOpt
     public setLog(log: Logger): this {
         this.options.log &#x3D; log;
         return this;
+    }
+
+    /**
+     * Prints the specified event immediately to the logger at &#x27;info&#x27; level.
+     *
+     * @template TEventData
+     * @template TEvent
+     * @param {TEvent} event
+     * @returns {Promise&lt;TEvent&gt;}
+     * @memberof LoggerReporter
+     */
+    public async reportEvent&lt;TEventData, TEvent extends Event&lt;TEventData&gt;&gt;(event: TEvent): Promise&lt;TEvent&gt; {
+        const ctx: LoggerReportingContext&lt;TEvent&gt; &#x3D; this
+            .createMetricSetReportContext({}, null, event.getTime(), &quot;gauge&quot;);
+        const logLine: LogLine &#x3D; this.reportGauge(event, ctx);
+        if (logLine) {
+            this.options.log.info(logLine.message, logLine.metadata);
+        }
+        return event;
     }
 
     /**

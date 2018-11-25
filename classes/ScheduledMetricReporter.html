@@ -163,6 +163,11 @@
                                 <a href="#createOverallReportContext">createOverallReportContext</a>
                             </li>
                             <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Async</span>
+                                <a href="#flushEvents">flushEvents</a>
+                            </li>
+                            <li>
                                     <span class="modifier">Protected</span>
                                 <a href="#getNumber">getNumber</a>
                             </li>
@@ -192,6 +197,11 @@
                                     <span class="modifier">Protected</span>
                                     <span class="modifier">Abstract</span>
                                 <a href="#reportCounter">reportCounter</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Async</span>
+                                <a href="#reportEvent">reportEvent</a>
                             </li>
                             <li>
                                     <span class="modifier">Protected</span>
@@ -386,7 +396,7 @@
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in MetricReporter:136</div>
+                                    <div class="io-line">Defined in MetricReporter:137</div>
                             </td>
                         </tr>
 
@@ -439,7 +449,7 @@
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in MetricReporter:152</div>
+                                    <div class="io-line">Defined in MetricReporter:153</div>
                             </td>
                         </tr>
 
@@ -487,7 +497,7 @@
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in MetricReporter:144</div>
+                                    <div class="io-line">Defined in MetricReporter:145</div>
                             </td>
                         </tr>
 
@@ -618,7 +628,7 @@ in the interval specified. The interval is converted into <a href="../miscellane
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in MetricReporter:217</div>
+                                    <div class="io-line">Defined in MetricReporter:218</div>
                             </td>
                         </tr>
 
@@ -691,7 +701,7 @@ in the interval specified. The interval is converted into <a href="../miscellane
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in MetricReporter:252</div>
+                                    <div class="io-line">Defined in MetricReporter:282</div>
                             </td>
                         </tr>
 
@@ -771,7 +781,7 @@ in the interval specified. The interval is converted into <a href="../miscellane
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in MetricReporter:243</div>
+                                    <div class="io-line">Defined in MetricReporter:273</div>
                             </td>
                         </tr>
 
@@ -850,7 +860,7 @@ in the interval specified. The interval is converted into <a href="../miscellane
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in MetricReporter:528</div>
+                                    <div class="io-line">Defined in MetricReporter:558</div>
                             </td>
                         </tr>
 
@@ -942,7 +952,7 @@ and the specified taggable metric (in this order).</p>
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in MetricReporter:361</div>
+                                    <div class="io-line">Defined in MetricReporter:391</div>
                             </td>
                         </tr>
 
@@ -1057,7 +1067,7 @@ and the specified taggable metric (in this order).</p>
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in MetricReporter:345</div>
+                                    <div class="io-line">Defined in MetricReporter:375</div>
                             </td>
                         </tr>
 
@@ -1071,6 +1081,60 @@ and the specified taggable metric (in this order).</p>
                             </div>
                             <div class="io-description">
                                 <b>Returns : </b>    <code><a href="../interfaces/OverallReportContext.html" target="_self" >OverallReportContext</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="flushEvents"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                                <span class="modifier">Async</span>
+                            flushEvents
+                            </b>
+                            <a href="#flushEvents"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>flushEvents()</code>
+                    </td>
+                </tr>
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Inherited from     <code><a href="../interfaces/Metric.html" target="_self" >MetricReporter</a></code>
+</div>
+                                </td>
+                            </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in MetricReporter:264</div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Sends events remaining in the queue (if a queue is used in the implementation).</p>
+</div>
+
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
 
                             </div>
                                 <div class="io-description">
@@ -1110,7 +1174,7 @@ and the specified taggable metric (in this order).</p>
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in MetricReporter:550</div>
+                                    <div class="io-line">Defined in MetricReporter:580</div>
                             </td>
                         </tr>
 
@@ -1189,7 +1253,7 @@ and the specified taggable metric (in this order).</p>
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in MetricReporter:176</div>
+                                    <div class="io-line">Defined in MetricReporter:177</div>
                             </td>
                         </tr>
 
@@ -1243,7 +1307,7 @@ and the specified taggable metric (in this order).</p>
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in MetricReporter:419</div>
+                                    <div class="io-line">Defined in MetricReporter:449</div>
                             </td>
                         </tr>
 
@@ -1370,7 +1434,7 @@ and the specified taggable metric (in this order).</p>
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in MetricReporter:498</div>
+                                    <div class="io-line">Defined in MetricReporter:528</div>
                             </td>
                         </tr>
 
@@ -1474,7 +1538,7 @@ This is always true if the minimal-reporting timeout was reached.</p>
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in MetricReporter:229</div>
+                                    <div class="io-line">Defined in MetricReporter:230</div>
                             </td>
                         </tr>
 
@@ -1547,7 +1611,7 @@ This is always true if the minimal-reporting timeout was reached.</p>
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in MetricReporter:263</div>
+                                    <div class="io-line">Defined in MetricReporter:293</div>
                             </td>
                         </tr>
 
@@ -1598,7 +1662,7 @@ afterwards.</p>
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in MetricReporter:436</div>
+                                    <div class="io-line">Defined in MetricReporter:466</div>
                             </td>
                         </tr>
 
@@ -1663,6 +1727,101 @@ afterwards.</p>
             <tbody>
                 <tr>
                     <td class="col-md-4">
+                        <a name="reportEvent"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                                <span class="modifier">Async</span>
+                            reportEvent
+                            </b>
+                            <a href="#reportEvent"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>reportEvent(event: <a href="../classes/Event.html">TEvent</a>)</code>
+                    </td>
+                </tr>
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Inherited from     <code><a href="../interfaces/Metric.html" target="_self" >MetricReporter</a></code>
+</div>
+                                </td>
+                            </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in MetricReporter:254</div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="col-md-4">
+                                <b>Type parameters :</b>
+                                <ul class="type-parameters">
+                                        <li>TEventData</li>
+                                        <li>TEvent</li>
+                                </ul>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Reports an <a href="../classes/Event.html">Event</a>.</p>
+<p>Implementations can choose how to process ad-hoc events, wether it&#39;s
+queuing the events to the next call to report or sending events
+immediately.</p>
+<p>Also the usual reporting process of calling <a href="#beforeReport">#beforeReport</a>, do the reporting
+and call <a href="#afterReport">#afterReport</a> may not be applied for ad-hoc events.</p>
+<p>This implementation does nothing and always resolved the specified evnet.</p>
+</div>
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>event</td>
+                                                        <td>
+                                                                    <code><a href="../classes/Event.html" target="_self" >TEvent</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="../classes/Event.html" target="_self" >Promise&lt;TEvent&gt;</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
                         <a name="reportGauge"></a>
                         <span class="name">
                             <b>
@@ -1690,7 +1849,7 @@ afterwards.</p>
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in MetricReporter:449</div>
+                                    <div class="io-line">Defined in MetricReporter:479</div>
                             </td>
                         </tr>
 
@@ -1782,7 +1941,7 @@ afterwards.</p>
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in MetricReporter:461</div>
+                                    <div class="io-line">Defined in MetricReporter:491</div>
                             </td>
                         </tr>
 
@@ -1874,7 +2033,7 @@ afterwards.</p>
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in MetricReporter:473</div>
+                                    <div class="io-line">Defined in MetricReporter:503</div>
                             </td>
                         </tr>
 
@@ -1966,7 +2125,7 @@ afterwards.</p>
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in MetricReporter:287</div>
+                                    <div class="io-line">Defined in MetricReporter:317</div>
                             </td>
                         </tr>
 
@@ -2061,7 +2220,7 @@ And finally calls <a href="#handleResults">#handleResults</a> for each of the re
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in MetricReporter:388</div>
+                                    <div class="io-line">Defined in MetricReporter:418</div>
                             </td>
                         </tr>
 
@@ -2187,7 +2346,7 @@ and calls the specified reporting function for the remaining.</p>
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in MetricReporter:485</div>
+                                    <div class="io-line">Defined in MetricReporter:515</div>
                             </td>
                         </tr>
 
@@ -2278,7 +2437,7 @@ and calls the specified reporting function for the remaining.</p>
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in MetricReporter:187</div>
+                                    <div class="io-line">Defined in MetricReporter:188</div>
                             </td>
                         </tr>
 
@@ -2351,7 +2510,7 @@ and calls the specified reporting function for the remaining.</p>
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in MetricReporter:199</div>
+                                    <div class="io-line">Defined in MetricReporter:200</div>
                             </td>
                         </tr>
 
@@ -2398,7 +2557,7 @@ and calls the specified reporting function for the remaining.</p>
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in MetricReporter:208</div>
+                                    <div class="io-line">Defined in MetricReporter:209</div>
                             </td>
                         </tr>
 

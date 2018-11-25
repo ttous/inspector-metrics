@@ -87,7 +87,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">lib/metrics/reporter/metric-reporter.ts:25</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">lib/metrics/reporter/metric-reporter.ts:26</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -102,6 +102,7 @@
 
 import { Clock } from &quot;../clock&quot;;
 import { Counter, MonotoneCounter } from &quot;../counter&quot;;
+import { Event } from &quot;../event&quot;;
 import { Gauge } from &quot;../gauge&quot;;
 import { Histogram } from &quot;../histogram&quot;;
 import { Meter } from &quot;../meter&quot;;
@@ -332,6 +333,35 @@ export abstract class MetricReporter&lt;O extends MetricReporterOptions, T&gt; {
             this.metricRegistries.splice(index, 1);
         }
         return this;
+    }
+
+    /**
+     * Reports an {@link Event}.
+     *
+     * Implementations can choose how to process ad-hoc events, wether it&#x27;s
+     * queuing the events to the next call to report or sending events
+     * immediately.
+     *
+     * Also the usual reporting process of calling {@link #beforeReport}, do the reporting
+     * and call {@link #afterReport} may not be applied for ad-hoc events.
+     *
+     * This implementation does nothing and always resolved the specified evnet.
+     *
+     * @param {MetricRegistry} event
+     * @returns {ThisType}
+     * @memberof MetricReporter
+     */
+    public async reportEvent&lt;TEventData, TEvent extends Event&lt;TEventData&gt;&gt;(event: TEvent): Promise&lt;TEvent&gt; {
+        return event;
+    }
+
+    /**
+     * Sends events remaining in the queue (if a queue is used in the implementation).
+     *
+     * @returns {Promise&lt;void&gt;}
+     * @memberof MetricReporter
+     */
+    public async flushEvents(): Promise&lt;void&gt; {
     }
 
     /**
@@ -630,7 +660,7 @@ export abstract class MetricReporter&lt;O extends MetricReporterOptions, T&gt; {
         if (this.options.tags) {
             this.options.tags.forEach((tag, key) &#x3D;&gt; tags[key] &#x3D; tag);
         }
-        if (registry.getTags()) {
+        if (registry &amp;&amp; registry.getTags()) {
             registry.getTags().forEach((tag, key) &#x3D;&gt; tags[key] &#x3D; tag);
         }
         if (taggable.getTags()) {
