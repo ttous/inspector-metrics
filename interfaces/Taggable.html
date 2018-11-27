@@ -86,6 +86,9 @@
                         <td class="col-md-4">
                             <ul class="index-list">
                                 <li>
+                                    <a href="#addTags">addTags</a>
+                                </li>
+                                <li>
                                     <a href="#getTag">getTag</a>
                                 </li>
                                 <li>
@@ -95,7 +98,13 @@
                                     <a href="#removeTag">removeTag</a>
                                 </li>
                                 <li>
+                                    <a href="#removeTags">removeTags</a>
+                                </li>
+                                <li>
                                     <a href="#setTag">setTag</a>
+                                </li>
+                                <li>
+                                    <a href="#setTags">setTags</a>
                                 </li>
                             </ul>
                         </td>
@@ -109,6 +118,70 @@
         <h3 id="methods">
             Methods
         </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="addTags"></a>
+                        <span class="name">
+                            <b>
+                            addTags
+                            </b>
+                            <a href="#addTags"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>addTags(tags: Map<string | string>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">lib/metrics/taggable.ts:54</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Adds the specified tags to metric&#39;s tags.</p>
+</div>
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>tags</td>
+                                                        <td>
+                                                                    <code>Map&lt;string | string&gt;</code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
@@ -247,7 +320,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">lib/metrics/taggable.ts:45</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="63" class="link-to-prism">lib/metrics/taggable.ts:63</a></div>
                             </td>
                         </tr>
 
@@ -272,6 +345,70 @@
                                                         <td>name</td>
                                                         <td>
                                                                     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="removeTags"></a>
+                        <span class="name">
+                            <b>
+                            removeTags
+                            </b>
+                            <a href="#removeTags"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>removeTags(...names: string[])</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="72" class="link-to-prism">lib/metrics/taggable.ts:72</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Removes the specified tag names.</p>
+</div>
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>names</td>
+                                                        <td>
+                                                                    <code>string[]</code>
                                                         </td>
                                                     
                                                     <td>
@@ -365,6 +502,70 @@
                 </tr>
             </tbody>
         </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="setTags"></a>
+                        <span class="name">
+                            <b>
+                            setTags
+                            </b>
+                            <a href="#setTags"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>setTags(tags: Map<string | string>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">lib/metrics/taggable.ts:45</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Sets tags set.</p>
+</div>
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>tags</td>
+                                                        <td>
+                                                                    <code>Map&lt;string | string&gt;</code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
 </section>
 
 
@@ -410,6 +611,24 @@ export interface Taggable {
     setTag(name: string, value: string): this;
 
     /**
+     * Sets tags set.
+     *
+     * @param {Map&lt;string, string&gt;} name
+     * @returns {this}
+     * @memberof Taggable
+     */
+    setTags(tags: Map&lt;string, string&gt;): this;
+
+    /**
+     * Adds the specified tags to metric&#x27;s tags.
+     *
+     * @param {Map&lt;string, string&gt;} name
+     * @returns {this}
+     * @memberof Taggable
+     */
+    addTags(tags: Map&lt;string, string&gt;): this;
+
+    /**
      * Removes the specified tag.
      *
      * @param {string} name
@@ -417,6 +636,15 @@ export interface Taggable {
      * @memberof Taggable
      */
     removeTag(name: string): this;
+
+    /**
+     * Removes the specified tag names.
+     *
+     * @param {string[]} names
+     * @returns {this}
+     * @memberof Taggable
+     */
+    removeTags(...names: string[]): this;
 
 }
 </code></pre>

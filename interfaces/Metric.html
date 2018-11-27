@@ -521,8 +521,23 @@ export abstract class BaseMetric implements Metric {
         return this;
     }
 
+    public setTags(tags: Map&lt;string, string&gt;): this {
+        this.tags &#x3D; tags;
+        return this;
+    }
+
+    public addTags(tags: Map&lt;string, string&gt;): this {
+        tags.forEach((value, key) &#x3D;&gt; this.tags.set(key, value));
+        return this;
+    }
+
     public removeTag(name: string): this {
         this.tags.delete(name);
+        return this;
+    }
+
+    public removeTags(...names: string[]): this {
+        names.forEach((name) &#x3D;&gt; this.removeTag(name));
         return this;
     }
 

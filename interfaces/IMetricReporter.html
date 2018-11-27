@@ -43,7 +43,7 @@
 
 <ol class="breadcrumb">
   <li>Interfaces</li>
-  <li>MetricSetReportContext</li>
+  <li>IMetricReporter</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -68,7 +68,7 @@
                 <h3>Description</h3>
             </p>
             <p class="comment">
-                <p>Helper interface for reporting runs.</p>
+                <p>Interface for metric-reporter.</p>
 
             </p>
 
@@ -79,26 +79,35 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <h6><b>Properties</b></h6>
+                            <h6><b>Methods</b></h6>
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-4">
                             <ul class="index-list">
                                 <li>
-                                        <a href="#date">date</a>
+                                    <a href="#addMetricRegistry">addMetricRegistry</a>
                                 </li>
                                 <li>
-                                        <a href="#metrics">metrics</a>
+                                    <a href="#flushEvents">flushEvents</a>
                                 </li>
                                 <li>
-                                        <a href="#overallCtx">overallCtx</a>
+                                    <a href="#getTags">getTags</a>
                                 </li>
                                 <li>
-                                        <a href="#registry">registry</a>
+                                    <a href="#removeMetricRegistry">removeMetricRegistry</a>
                                 </li>
                                 <li>
-                                        <a href="#type">type</a>
+                                    <a href="#reportEvent">reportEvent</a>
+                                </li>
+                                <li>
+                                    <a href="#setTags">setTags</a>
+                                </li>
+                                <li>
+                                    <a href="#start">start</a>
+                                </li>
+                                <li>
+                                    <a href="#stop">stop</a>
                                 </li>
                             </ul>
                         </td>
@@ -107,186 +116,458 @@
             </table>
         </section>
 
-
-
             <section>
-                <h3 id="inputs">Properties</h3>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <a name="date"></a>
-                                        <span class="name"><b>date</b><a href="#date"><span class="icon ion-ios-link"></span></a></span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <code>date:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank" >Date</a></code>
-</code>
-                                    </td>
-                                </tr>
+    
+        <h3 id="methods">
+            Methods
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="addMetricRegistry"></a>
+                        <span class="name">
+                            <b>
+                            addMetricRegistry
+                            </b>
+                            <a href="#addMetricRegistry"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>addMetricRegistry(metricRegistry: <a href="../interfaces/Metric.html">MetricRegistry</a>)</code>
+                    </td>
+                </tr>
 
 
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank" >Date</a></code>
-
-                                        </td>
-                                    </tr>
-
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="170" class="link-to-prism">lib/metrics/reporter/metric-reporter.ts:170</a></div>
+                            </td>
+                        </tr>
 
 
-
-
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-description"><p>The current date.</p>
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Adds a new <a href="../classes/MetricRegistry.html">MetricRegistry</a> to be reported.</p>
 </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <a name="metrics"></a>
-                                        <span class="name"><b>metrics</b><a href="#metrics"><span class="icon ion-ios-link"></span></a></span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <code>metrics:     <code>M[]</code>
-</code>
-                                    </td>
-                                </tr>
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>metricRegistry</td>
+                                                        <td>
+                                                                    <code><a href="../interfaces/Metric.html" target="_self" >MetricRegistry</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="flushEvents"></a>
+                        <span class="name">
+                            <b>
+                            flushEvents
+                            </b>
+                            <a href="#flushEvents"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>flushEvents()</code>
+                    </td>
+                </tr>
 
 
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Type : </i>    <code>M[]</code>
-
-                                        </td>
-                                    </tr>
-
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="205" class="link-to-prism">lib/metrics/reporter/metric-reporter.ts:205</a></div>
+                            </td>
+                        </tr>
 
 
-
-
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-description"><p>The array of metric instance that is currently reported.</p>
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Sends events remaining in the queue (if a queue is used in the implementation).</p>
 </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <a name="overallCtx"></a>
-                                        <span class="name"><b>overallCtx</b><a href="#overallCtx"><span class="icon ion-ios-link"></span></a></span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <code>overallCtx:     <code><a href="../interfaces/OverallReportContext.html" target="_self" >OverallReportContext</a></code>
-</code>
-                                    </td>
-                                </tr>
+
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="getTags"></a>
+                        <span class="name">
+                            <b>
+                            getTags
+                            </b>
+                            <a href="#getTags"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>getTags()</code>
+                    </td>
+                </tr>
 
 
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Type : </i>    <code><a href="../interfaces/OverallReportContext.html" target="_self" >OverallReportContext</a></code>
-
-                                        </td>
-                                    </tr>
-
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="134" class="link-to-prism">lib/metrics/reporter/metric-reporter.ts:134</a></div>
+                            </td>
+                        </tr>
 
 
-
-
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-description"><p>The OverallReportContext this context is running in.</p>
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Gets the reporter tags.</p>
 </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <a name="registry"></a>
-                                        <span class="name"><b>registry</b><a href="#registry"><span class="icon ion-ios-link"></span></a></span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <code>registry:     <code><a href="../interfaces/Metric.html" target="_self" >MetricRegistry</a></code>
-</code>
-                                    </td>
-                                </tr>
+
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>Map&lt;string, string&gt;</code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="removeMetricRegistry"></a>
+                        <span class="name">
+                            <b>
+                            removeMetricRegistry
+                            </b>
+                            <a href="#removeMetricRegistry"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>removeMetricRegistry(metricRegistry: <a href="../interfaces/Metric.html">MetricRegistry</a>)</code>
+                    </td>
+                </tr>
 
 
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Type : </i>    <code><a href="../interfaces/Metric.html" target="_self" >MetricRegistry</a></code>
-
-                                        </td>
-                                    </tr>
-
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="179" class="link-to-prism">lib/metrics/reporter/metric-reporter.ts:179</a></div>
+                            </td>
+                        </tr>
 
 
-
-
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-description"><p>The registry the metric are registered in.</p>
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Removes the given <a href="../classes/MetricRegistry.html">MetricRegistry</a> if it was previously added.</p>
 </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <a name="type"></a>
-                                        <span class="name"><b>type</b><a href="#type"><span class="icon ion-ios-link"></span></a></span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <code>type:     <code><a href="../interfaces/Metric.html" target="_self" >MetricType</a></code>
-</code>
-                                    </td>
-                                </tr>
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>metricRegistry</td>
+                                                        <td>
+                                                                    <code><a href="../interfaces/Metric.html" target="_self" >MetricRegistry</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="reportEvent"></a>
+                        <span class="name">
+                            <b>
+                            reportEvent
+                            </b>
+                            <a href="#reportEvent"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>reportEvent(event: <a href="../classes/Event.html">TEvent</a>)</code>
+                    </td>
+                </tr>
 
 
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Type : </i>    <code><a href="../interfaces/Metric.html" target="_self" >MetricType</a></code>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="197" class="link-to-prism">lib/metrics/reporter/metric-reporter.ts:197</a></div>
+                            </td>
+                        </tr>
 
-                                        </td>
-                                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <b>Type parameters :</b>
+                                <ul class="type-parameters">
+                                        <li>TEventData</li>
+                                        <li>TEvent</li>
+                                </ul>
+                            </td>
+                        </tr>
 
-
-
-
-
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-description"><p>The type of the metrics in the <a href="#metrics">#metrics</a> array.</p>
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Reports an <a href="../classes/Event.html">Event</a>.</p>
+<p>Implementations can choose how to process ad-hoc events, wether it&#39;s
+queuing the events to the next call to report or sending events
+immediately.</p>
+<p>Also the usual reporting process of calling <a href="#beforeReport">#beforeReport</a>, do the reporting
+and call <a href="#afterReport">#afterReport</a> may not be applied for ad-hoc events.</p>
+<p>This implementation does nothing and always resolved the specified evnet.</p>
 </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-            </section>
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>event</td>
+                                                        <td>
+                                                                    <code><a href="../classes/Event.html" target="_self" >TEvent</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="../classes/Event.html" target="_self" >Promise&lt;TEvent&gt;</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="setTags"></a>
+                        <span class="name">
+                            <b>
+                            setTags
+                            </b>
+                            <a href="#setTags"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>setTags(tags: Map<string | string>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="143" class="link-to-prism">lib/metrics/reporter/metric-reporter.ts:143</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Sets the reporter tags.</p>
+</div>
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>tags</td>
+                                                        <td>
+                                                                    <code>Map&lt;string | string&gt;</code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="start"></a>
+                        <span class="name">
+                            <b>
+                            start
+                            </b>
+                            <a href="#start"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>start()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="152" class="link-to-prism">lib/metrics/reporter/metric-reporter.ts:152</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Implementations start reporting metrics when called.</p>
+</div>
+
+                            <div>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="stop"></a>
+                        <span class="name">
+                            <b>
+                            stop
+                            </b>
+                            <a href="#stop"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>stop()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="161" class="link-to-prism">lib/metrics/reporter/metric-reporter.ts:161</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Implementations stop reporting metrics when called.</p>
+</div>
+
+                            <div>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
     </div>
 
 
@@ -991,7 +1272,7 @@ export abstract class MetricReporter&lt;O extends MetricReporterOptions, T&gt; i
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'interface';
-            var COMPODOC_CURRENT_PAGE_URL = 'MetricSetReportContext.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'IMetricReporter.html';
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

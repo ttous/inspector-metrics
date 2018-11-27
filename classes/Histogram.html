@@ -198,6 +198,10 @@
                             </li>
                             <li>
                                     <span class="modifier">Public</span>
+                                <a href="#addTags">addTags</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
                                 <a href="#getDescription">getDescription</a>
                             </li>
                             <li>
@@ -234,6 +238,10 @@
                             </li>
                             <li>
                                     <span class="modifier">Public</span>
+                                <a href="#removeTags">removeTags</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
                                 <a href="#setDescription">setDescription</a>
                             </li>
                             <li>
@@ -251,6 +259,10 @@
                             <li>
                                     <span class="modifier">Public</span>
                                 <a href="#setTag">setTag</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#setTags">setTags</a>
                             </li>
                             <li>
                                     <span class="modifier">Public</span>
@@ -1270,6 +1282,76 @@ according bucket count. E.g. assume the bucket config [10, 20, 30]:</p>
             <tbody>
                 <tr>
                     <td class="col-md-4">
+                        <a name="addTags"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            addTags
+                            </b>
+                            <a href="#addTags"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>addTags(tags: Map<string | string>)</code>
+                    </td>
+                </tr>
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Inherited from     <code><a href="../interfaces/Metric.html" target="_self" >BaseMetric</a></code>
+</div>
+                                </td>
+                            </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in BaseMetric:187</div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>tags</td>
+                                                        <td>
+                                                                    <code>Map&lt;string | string&gt;</code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
                         <a name="getDescription"></a>
                         <span class="name">
                             <b>
@@ -1773,7 +1855,7 @@ according bucket count. E.g. assume the bucket config [10, 20, 30]:</p>
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in BaseMetric:182</div>
+                                    <div class="io-line">Defined in BaseMetric:192</div>
                             </td>
                         </tr>
 
@@ -1796,6 +1878,76 @@ according bucket count. E.g. assume the bucket config [10, 20, 30]:</p>
                                                         <td>name</td>
                                                         <td>
                                                                     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="removeTags"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            removeTags
+                            </b>
+                            <a href="#removeTags"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>removeTags(...names: string[])</code>
+                    </td>
+                </tr>
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Inherited from     <code><a href="../interfaces/Metric.html" target="_self" >BaseMetric</a></code>
+</div>
+                                </td>
+                            </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in BaseMetric:197</div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>names</td>
+                                                        <td>
+                                                                    <code>string[]</code>
                                                         </td>
                                                     
                                                     <td>
@@ -2199,6 +2351,76 @@ according bucket count. E.g. assume the bucket config [10, 20, 30]:</p>
             <tbody>
                 <tr>
                     <td class="col-md-4">
+                        <a name="setTags"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            setTags
+                            </b>
+                            <a href="#setTags"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>setTags(tags: Map<string | string>)</code>
+                    </td>
+                </tr>
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Inherited from     <code><a href="../interfaces/Metric.html" target="_self" >BaseMetric</a></code>
+</div>
+                                </td>
+                            </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in BaseMetric:182</div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>tags</td>
+                                                        <td>
+                                                                    <code>Map&lt;string | string&gt;</code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
                         <a name="toString"></a>
                         <span class="name">
                             <b>
@@ -2225,7 +2447,7 @@ according bucket count. E.g. assume the bucket config [10, 20, 30]:</p>
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in BaseMetric:187</div>
+                                    <div class="io-line">Defined in BaseMetric:202</div>
                             </td>
                         </tr>
 
