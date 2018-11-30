@@ -130,10 +130,12 @@
                         <ul class="index-list">
                             <li>
                                     <span class="modifier">Public</span>
+                                    <span class="modifier">Async</span>
                                 <a href="#start">start</a>
                             </li>
                             <li>
                                     <span class="modifier">Public</span>
+                                    <span class="modifier">Async</span>
                                 <a href="#stop">stop</a>
                             </li>
                             <li>
@@ -525,6 +527,7 @@
                         <span class="name">
                             <b>
                                 <span class="modifier">Public</span>
+                                <span class="modifier">Async</span>
                             start
                             </b>
                             <a href="#start"><span class="icon ion-ios-link"></span></a>
@@ -554,6 +557,13 @@ in the interval specified. The interval is converted into <a href="../miscellane
 
                             <div>
                             </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>Promise&lt;&gt;</code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
                     </td>
                 </tr>
             </tbody>
@@ -566,6 +576,7 @@ in the interval specified. The interval is converted into <a href="../miscellane
                         <span class="name">
                             <b>
                                 <span class="modifier">Public</span>
+                                <span class="modifier">Async</span>
                             stop
                             </b>
                             <a href="#stop"><span class="icon ion-ios-link"></span></a>
@@ -594,6 +605,13 @@ in the interval specified. The interval is converted into <a href="../miscellane
 
                             <div>
                             </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>Promise&lt;&gt;</code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
                     </td>
                 </tr>
             </tbody>
@@ -2522,6 +2540,13 @@ and calls the specified reporting function for the remaining.</p>
 
                             <div>
                             </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>Promise&lt;&gt;</code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
                     </td>
                 </tr>
             </tbody>
@@ -2569,6 +2594,13 @@ and calls the specified reporting function for the remaining.</p>
 
                             <div>
                             </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>Promise&lt;&gt;</code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
                     </td>
                 </tr>
             </tbody>
@@ -2658,10 +2690,10 @@ export abstract class ScheduledMetricReporter&lt;O extends ScheduledMetricReport
      * Uses the scheduler function to call the {@link #report} function
      * in the interval specified. The interval is converted into {@link MILLISECOND}s.
      *
-     * @returns {this}
+     * @returns {Promise&lt;this&gt;}
      * @memberof ScheduledMetricReporter
      */
-    public start(): this {
+    public async start(): Promise&lt;this&gt; {
         const interval: number &#x3D; this.options.unit.convertTo(this.options.reportInterval, MILLISECOND);
         this.timer &#x3D; this.options.scheduler(() &#x3D;&gt; this.report(), interval);
         return this;
@@ -2670,10 +2702,10 @@ export abstract class ScheduledMetricReporter&lt;O extends ScheduledMetricReport
     /**
      * Stops reporting metrics.
      *
-     * @returns {this}
+     * @returns {Promise&lt;this&gt;}
      * @memberof ScheduledMetricReporter
      */
-    public stop(): this {
+    public async stop(): Promise&lt;this&gt; {
         if (this.timer) {
             this.timer.unref();
         }

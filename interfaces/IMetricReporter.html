@@ -523,6 +523,13 @@ and call <a href="#afterReport">#afterReport</a> may not be applied for ad-hoc e
 
                             <div>
                             </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>Promise&lt;&gt;</code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
                     </td>
                 </tr>
             </tbody>
@@ -561,6 +568,13 @@ and call <a href="#afterReport">#afterReport</a> may not be applied for ad-hoc e
 
                             <div>
                             </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>Promise&lt;&gt;</code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
                     </td>
                 </tr>
             </tbody>
@@ -720,19 +734,19 @@ export interface IMetricReporter {
      * Implementations start reporting metrics when called.
      *
      * @abstract
-     * @returns {this}
+     * @returns {Promise&lt;this&gt;}
      * @memberof IMetricReporter
      */
-    start(): this;
+    start(): Promise&lt;this&gt;;
 
     /**
      * Implementations stop reporting metrics when called.
      *
      * @abstract
-     * @returns {this}
+     * @returns {Promise&lt;this&gt;}
      * @memberof IMetricReporter
      */
-    stop(): this;
+    stop(): Promise&lt;this&gt;;
 
     /**
      * Adds a new {@link MetricRegistry} to be reported.
@@ -855,19 +869,19 @@ export abstract class MetricReporter&lt;O extends MetricReporterOptions, T&gt; i
      * Implementations start reporting metrics when called.
      *
      * @abstract
-     * @returns {this}
+     * @returns {Promise&lt;this&gt;}
      * @memberof MetricReporter
      */
-    public abstract start(): this;
+    public abstract start(): Promise&lt;this&gt;;
 
     /**
      * Implementations stop reporting metrics when called.
      *
      * @abstract
-     * @returns {this}
+     * @returns {Promise&lt;this&gt;}
      * @memberof MetricReporter
      */
-    public abstract stop(): this;
+    public abstract stop(): Promise&lt;this&gt;;
 
     /**
      * Adds a new {@link MetricRegistry} to be reported.
