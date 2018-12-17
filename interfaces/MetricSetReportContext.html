@@ -302,6 +302,7 @@ import { Meter } from &quot;../meter&quot;;
 import { Metric } from &quot;../metric&quot;;
 import { MetricRegistry } from &quot;../metric-registry&quot;;
 import { Taggable } from &quot;../taggable&quot;;
+import { MILLISECOND, MINUTE } from &quot;../time-unit&quot;;
 import { Timer } from &quot;../timer&quot;;
 import { MetricEntry } from &quot;./metric-entry&quot;;
 import { MetricType } from &quot;./metric-type&quot;;
@@ -901,7 +902,7 @@ export abstract class MetricReporter&lt;O extends MetricReporterOptions, T&gt; i
      * @private
      * @param {number} metricId
      * @param {number} lastValue
-     * @param {Date} date
+     * @param {number} date
      * @returns {boolean}
      * @memberof MetricReporter
      */
@@ -915,11 +916,13 @@ export abstract class MetricReporter&lt;O extends MetricReporterOptions, T&gt; i
             metricEntry &#x3D; this.metricStates.get(metricId);
             changed &#x3D; metricEntry.lastValue !&#x3D;&#x3D; lastValue;
             if (!changed) {
-                changed &#x3D; metricEntry.lastReport + this.options.minReportingTimeout &lt; date;
+                const minReportingTimeout &#x3D; MINUTE.convertTo(this.options.minReportingTimeout, MILLISECOND);
+                changed &#x3D; metricEntry.lastReport + minReportingTimeout &lt; date;
             }
         }
         if (changed) {
             metricEntry.lastReport &#x3D; date;
+            metricEntry.lastValue &#x3D; lastValue;
         }
         this.metricStates.set(metricId, metricEntry);
         return changed;
